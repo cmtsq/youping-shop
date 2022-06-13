@@ -1,0 +1,105 @@
+const express = require('express');
+const adminCtr = require('../control/adminCtr');
+const adminRouter = express.Router();
+
+//后台管理员登录页展示
+adminRouter.get('/admin_login',(req,res)=>{
+    res.render('admin/admin_login.html');
+});
+adminRouter.post('/doAdminLog',(req,res)=>{
+    adminCtr.adminLog(req,res);
+});
+//修改头像跳转路由
+adminRouter.post('/doUpdateHead',(req,res)=>{
+    adminCtr.updateAdminHead(req,res);
+});
+//修改密码
+adminRouter.post('/doUpdatePass',(req,res)=>{
+    adminCtr.updateAdminPass(req,res);
+});
+//后台首页显示
+adminRouter.get('/admin',(req,res)=>{
+    adminCtr.showAdmin(req,res);
+});
+adminRouter.get('/admin_index',(req,res)=>{
+    adminCtr.showAdminIndex(req,res);
+});
+//用户列表的展示
+adminRouter.get('/admin_customer',(req,res)=>{
+    adminCtr.userAdmin(req,res);
+});
+//解除冻结用户账号
+adminRouter.get('/UnfreezeUser',(req,res)=>{
+    adminCtr.Unfreeze(req,res);
+});
+//冻结用户账号
+adminRouter.get('/freezeUser',(req,res)=>{
+    adminCtr.freeze(req,res);
+});
+//商品列表展示以及商品类型，搜索商品
+adminRouter.get('/admin_goods',(req,res)=>{
+    adminCtr.showGoodsAdminByPage(req,res);
+});
+adminRouter.get('/admin_goods_type',(req,res)=>{
+    adminCtr.showGoodsType(req,res);
+});
+adminRouter.get('/admin_search',(req,res)=>{
+    res.render('admin/admin_goods_search.html');
+});
+adminRouter.post('/doAdminGoodsSearch',(req,res)=>{
+    adminCtr.showGoodsSearch(req,res);
+});
+//添加商品信息
+adminRouter.get('/showAddGoods',(req,res)=>{
+    res.render('admin/admin_goods_add.html');
+});
+adminRouter.post('/doAddGoods',(req,res)=>{
+    adminCtr.addGoods(req,res);
+});
+//修改商品信息
+adminRouter.get('/showUpdateGoods',(req,res)=>{
+    adminCtr.showGoodsByID(req,res);
+});
+adminRouter.post('/doUpdateGoods',(req,res)=>{
+    adminCtr.doUpdateGoods(req,res);
+});
+//上架商品
+adminRouter.get('/putAwayGoods',(req,res)=>{
+    adminCtr.putAwayGoods(req,res);
+});
+//下架商品
+adminRouter.get('/outAwayGoods',(req,res)=>{
+    adminCtr.outAwayGoods(req,res);
+});
+//订单列表展示
+adminRouter.get('/admin_order',(req,res)=>{
+    adminCtr.showAdminOrder(req,res);
+});
+////发货处理
+adminRouter.get('/admin_sendHandel',(req,res)=>{
+    adminCtr.sendGoodsHandel(req,res);
+});
+adminRouter.get('/doSendGoodsHandel',(req,res)=>{
+    adminCtr.doSendGoodsHandel(req,res);
+});
+//评价中心渲染,评论搜索
+adminRouter.get('/admin_evaluate',(req,res)=>{
+    adminCtr.showEvaluate(req,res);
+});
+adminRouter.get('/doSearchRemark',(req,res)=>{
+    adminCtr.showSearchRemark(req,res);
+});
+//上一页，下一页
+adminRouter.get('/doSearchRemark2',(req,res)=>{
+    adminCtr.showSearchRemark2(req,res);
+});
+//回评
+adminRouter.post('/doReply',(req,res)=>{
+    adminCtr.doReply(req,res);
+});
+//删除回评
+adminRouter.get('/delReply',(req,res)=>{
+    adminCtr.delReply(req,res);
+});
+
+module.exports = adminRouter;

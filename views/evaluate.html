@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../public/CSS/font-awesome.min.css">
+    <link rel="stylesheet" href="../public/CSS/evaluate.css">
+    <link rel="stylesheet" href="../public/CSS/index.css">
+</head>
+<body>
+<div class="main_collect">
+    <section>
+        <div class="collect_title">
+            <p style="float: left">我的评论</p>
+            <p class="remark_news"><i class="fa fa-bell" aria-hidden="true">消息</i></p>
+        </div>
+    </section>
+    <div class="remark_list">
+        {{if remarkList[0]}}
+        {{each remarkList remark}}
+        <div class="remark_item">
+            <div class="remark_goods">
+                <p class="remark_goods_img"><img src="../public/image/{{remark.goods_img}}" width="143px" height="143px" ></p>
+                <p class="remark_goods_content">
+                    <span class="remark_goods_txt" title="{{remark.goods_name}}">{{remark.goods_name}}</span>
+                    <span class="remark_goods_price">{{remark.price_new}}元</span>
+                </p>
+            </div>
+            <div class="remark_content">
+                <p class="remark_txt">{{remark.remark_content}}</p>
+                <p class="remark_time">[{{remark.remark_time.toLocaleString()}}]</p>
+            </div>
+        </div>
+        {{/each}}
+        {{else}}
+        <div class="no_text">
+            <div class="no_txt">
+                <div class="no_img"></div>
+                <p>太冷清了，您没参与过评论</p>
+            </div>
+        </div>
+        {{/if}}
+    </div>
+    <div class="remark_reply" style="display: none">
+        {{if remarkReplyList[0]}}
+        {{each remarkReplyList remarkReply}}
+        <div class="remark_item">
+            <div class="reply_news">
+                <p class="reply_tit">商家回复：</p>
+                <p class="reply_content">{{remarkReply.reply_content}}</p>
+            </div>
+            <div>
+                <div class="remark_goods">
+                    <p class="remark_goods_img"><img src="../public/image/{{remarkReply.goods_img}}" width="143px" height="143px" ></p>
+                    <p class="remark_goods_content">
+                        <span class="remark_goods_txt" title="{{remarkReply.goods_name}}">{{remarkReply.goods_name}}</span>
+                        <span class="remark_goods_price">{{remarkReply.price_new}}元</span>
+                    </p>
+                </div>
+                <div class="remark_content remark_info">
+                    <p class="remark_txt remark_text">{{remarkReply.remark_content}}</p>
+                    <p class="remark_time">[{{remarkReply.remark_time.toLocaleString()}}]</p>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+        {{else}}
+        <div class="no_text">
+            <div class="no_txt">
+                <div class="no_img"></div>
+                <p>没有任何消息</p>
+            </div>
+        </div>
+        {{/if}}
+    </div>
+</div>
+</body>
+<script src="../public/JS/jquery-1.12.4.js"></script>
+<script>
+    $('.remark_news').click(function () {
+        $('.remark_list').hide();
+        $('.remark_reply').show();
+    });
+</script>
+</html>

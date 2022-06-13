@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理</title>
+    <link rel="stylesheet" href="../../public/CSS/admin_index.css">
+    <link rel="stylesheet" href="../../public/CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="../../public/CSS/font-awesome.min.css">
+    <script src="../../public/JS/jquery.min.js"></script>
+    <script src="../../public/JS/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../../public/CSS/admin_goods.css">
+</head>
+<body>
+<div class="admin_goods">
+    <div class="link-nav">
+        <ul>
+            <li><a herf="">商品管理 ></a></li>
+            <li> 商品列表</li>
+        </ul>
+    </div>
+    <div class="admin_goods_message">
+        <div class="btn-group btn-group-justified group_btn">
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary background_color">有品众筹</button>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary">有品秒杀</button>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary">每日新品</button>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary">专属推荐</button>
+            </div>
+        </div>
+        <table class="table table-hover">
+            <thead>
+            <tr style="background-color: #e0e7ec;">
+                <th>商品ID</th>
+                <th>商品名称</th>
+                <th>商品图片</th>
+                <th>折扣前</th>
+                <th>折扣后</th>
+                <th>库存量</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{each ypzcList ypzc}}
+            <tr>
+                <td>{{ypzc.goodsID}}</td>
+                <td style="width: 200px">{{ypzc.goods_name}}</td>
+                <td><img src="../../public/image/{{ypzc.goods_img}}" width="60px" height="60px"></td>
+                <td>{{ypzc.price_old}}￥</td>
+                <td>{{ypzc.price_new}}￥</td>
+                <td>{{ypzc.stock}}</td>
+                <td>
+                    <a href="/admin/showUpdateGoods?goodsID={{ypzc.goodsID}}" class="btn btn-success">修改</a>&ensp;
+                    {{if ypzc.goods_status=='上架'}}
+                    <a href="/admin/outAwayGoods?goodsID={{ypzc.goodsID}}" class="btn btn-warning">下架</a>
+                    {{else}}
+                    <a href="/admin/putAwayGoods?goodsID={{ypzc.goodsID}}" class="btn btn-info">上架</a>
+                    {{/if}}
+                </td>
+            </tr>
+            {{/each}}
+            </tbody>
+            <tbody style="display: none;">
+            {{each ypmsList ypms}}
+            <tr>
+                <td>{{ypms.goodsID}}</td>
+                <td style="width: 200px">{{ypms.goods_name}}</td>
+                <td><img src="../../public/image/{{ypms.goods_img}}" width="60px" height="60px"></td>
+                <td>{{ypms.price_old}}￥</td>
+                <td>{{ypms.price_new}}￥</td>
+                <td>{{ypms.stock}}</td>
+                <td>
+                    <a href="/admin/showUpdateGoods?goodsID={{ypms.goodsID}}" class="btn btn-success">修改</a>&ensp;
+                    {{if ypms.goods_status=='上架'}}
+                    <a href="/admin/outAwayGoods?goodsID={{ypms.goodsID}}" class="btn btn-warning">下架</a>
+                    {{else}}
+                    <a href="/admin/putAwayGoods?goodsID={{ypms.goodsID}}" class="btn btn-info">上架</a>
+                    {{/if}}
+                </td>
+            </tr>
+            {{/each}}
+            </tbody>
+            <tbody style="display: none;">
+            {{each mrxpList mrxp}}
+            <tr>
+                <td>{{mrxp.goodsID}}</td>
+                <td style="width: 200px">{{mrxp.goods_name}}</td>
+                <td><img src="../../public/image/{{mrxp.goods_img}}" width="60px" height="60px"></td>
+                <td>{{mrxp.price_old}}￥</td>
+                <td>{{mrxp.price_new}}￥</td>
+                <td>{{mrxp.stock}}</td>
+                <td>
+                    <a href="/admin/showUpdateGoods?goodsID={{mrxp.goodsID}}" class="btn btn-success">修改</a>&ensp;
+                    {{if mrxp.goods_status=='上架'}}
+                    <a href="/admin/outAwayGoods?goodsID={{mrxp.goodsID}}" class="btn btn-warning">下架</a>
+                    {{else}}
+                    <a href="/admin/putAwayGoods?goodsID={{mrxp.goodsID}}" class="btn btn-info">上架</a>
+                    {{/if}}
+                </td>
+            </tr>
+            {{/each}}
+            </tbody>
+            <tbody style="display: none;">
+            {{each zstjList zstj}}
+            <tr>
+                <td>{{zstj.goodsID}}</td>
+                <td style="width: 200px">{{zstj.goods_name}}</td>
+                <td><img src="../../public/image/{{zstj.goods_img}}" width="60px" height="60px"></td>
+                <td>{{zstj.price_old}}￥</td>
+                <td>{{zstj.price_new}}￥</td>
+                <td>{{zstj.stock}}</td>
+                <td>
+                    <a href="/admin/showUpdateGoods?goodsID={{zstj.goodsID}}" class="btn btn-success">修改</a>&ensp;
+                    {{if zstj.goods_status=='上架'}}
+                    <a href="/admin/outAwayGoods?goodsID={{zstj.goodsID}}" class="btn btn-warning">下架</a>
+                    {{else}}
+                    <a href="/admin/putAwayGoods?goodsID={{zstj.goodsID}}" class="btn btn-info">上架</a>
+                    {{/if}}
+                </td>
+            </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+<script src="../../public/JS/jquery-1.12.4.js"></script>
+<script>
+    $('.group_btn div').click(function () {
+        var index = $(this).index();
+        if(index == 0){
+            $('table tbody:eq(0)').show();
+            $('table tbody:eq(1)').hide();
+            $('table tbody:eq(2)').hide();
+            $('table tbody:eq(3)').hide();
+            $(this).children('button').addClass('background_color');
+            $(this).siblings().children('button').removeClass('background_color');
+        }else if(index == 1){
+            $('table tbody:eq(0)').hide();
+            $('table tbody:eq(1)').show();
+            $('table tbody:eq(2)').hide();
+            $('table tbody:eq(3)').hide();
+            $(this).children('button').addClass('background_color');
+            $(this).siblings().children('button').removeClass('background_color');
+        }else if(index == 2){
+            $('table tbody:eq(0)').hide();
+            $('table tbody:eq(1)').hide();
+            $('table tbody:eq(2)').show();
+            $('table tbody:eq(3)').hide();
+            $(this).children('button').addClass('background_color');
+            $(this).siblings().children('button').removeClass('background_color');
+        }else if(index == 3){
+            $('table tbody:eq(0)').hide();
+            $('table tbody:eq(1)').hide();
+            $('table tbody:eq(2)').hide();
+            $('table tbody:eq(3)').show();
+            $(this).children('button').addClass('background_color');
+            $(this).siblings().children('button').removeClass('background_color');
+        }
+
+    });
+</script>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理</title>
+    <link rel="stylesheet" href="../../public/CSS/admin_index.css">
+    <link rel="stylesheet" href="../../public/CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="../../public/CSS/font-awesome.min.css">
+    <script src="../../public/JS/jquery.min.js"></script>
+    <script src="../../public/JS/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../../public/CSS/admin_customer.css">
+</head>
+<body>
+<div class="admin_main_user">
+    <table class="table table-hover">
+        <caption><span>用户管理</span> ><span class="user_list">用户列表</span></caption>
+        <thead>
+        <tr>
+            <th>用户ID</th>
+            <th>用户头像</th>
+            <th>用户账号</th>
+            <th>密码</th>
+            <th>账户状态</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{each customerList customer}}
+        <tr>
+            <td>{{customer.userID}}</td>
+            <td><img src="../../public/image/{{customer.user_head}}" width="30px" height="30px"></td>
+            <td>{{customer.user_name}}</td>
+            <td title="{{customer.user_pass}}">******</td>
+            <td>
+                {{if customer.user_status == '冻结'}}
+                <span style="color: #00CCFF;font-weight: bold">{{customer.user_status}}</span>
+                {{else if customer.user_status == '存在风险'}}
+                <span style="color: firebrick;font-weight: bold">{{customer.user_status}}!</span>
+                {{else}}
+                <span style="font-weight: bold">{{customer.user_status}}</span>
+                {{/if}}
+            </td>
+            <td class="run_edit">&emsp;
+                {{if customer.user_status == '冻结'}}
+                <a href="/admin/UnfreezeUser?userID={{customer.userID}}" class="btn btn-info">解 冻</a>
+                {{else}}
+                <a href="/admin/freezeUser?userID={{customer.userID}}" class="btn btn-danger">冻 结</a>
+                {{/if}}
+            </td>
+        </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>
+</body>
+<script src="../../public/JS/jquery-1.12.4.js"></script>
+</html>

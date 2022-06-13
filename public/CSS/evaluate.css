@@ -1,0 +1,151 @@
+.main_collect{
+    font-size: 16px;
+    padding: 11px 0 11px 60px;
+    min-height: 500px;
+}
+.main_collect section{
+    position: relative;
+    display: block;
+    overflow: hidden;
+    color: #4a4a4a;
+}
+.collect_title{
+    padding: 25px 0 10px;
+    margin: 0 30px 0 0;
+    overflow: hidden;
+    border-bottom: 1px solid #e7e7e7;
+}
+.collect_title p{
+    color: #845f3f;
+    font-size: 18px;
+    font-weight: 400;
+}
+.remark_news{
+    cursor: pointer;
+}
+.remark_news i{
+    font-size: 15px;
+    float: right;
+    line-height: 24px;
+}
+.remark_news i:hover{
+    color: darkgrey;
+}
+.remark_list{
+    width: 96.5%;
+    height: 100%;
+    background: #f5f5f56b;
+}
+.remark_item{
+    border-bottom: 1px solid #e7e7e7;
+    overflow: hidden;
+}
+.remark_content{
+    float: left;
+    height: 147px;
+}
+.remark_txt{
+    margin-bottom: 2px;
+    margin-top: 30px;
+    width: 340px;
+}
+.remark_goods{
+    float: left;
+}
+.remark_goods_img{
+    float: left;
+}
+.remark_goods_content{
+    float: left;
+    height: 147px;
+}
+.remark_goods_txt{
+    display: block;
+    line-height: 40px;
+    margin-top: 30px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 17px;
+    width: 180px;
+    overflow: hidden;
+}
+.remark_goods_price{
+    color: #cd1b1e;
+    display: block;
+    font-size: 15px;
+}
+.remark_del{
+    position: relative;
+    display: block;
+    float: right;
+    margin: 55px 0;
+}
+.remark_del a{
+    color: #666;
+    border: 1px solid #666;
+    height: 36px;
+    line-height: 34px;
+    font-size: 16px;
+    display: inline-block;
+    border-radius: 2px;
+    text-align: center;
+    padding: 0 6px;
+    transition: all .5s cubic-bezier(0,1,.5,1);
+    width: 100px;
+}
+.remark_del a:hover{
+    background-color: #845f3f;
+    color: white;
+}
+.remark_reply{
+    width: 96.5%;
+    height: 100%;
+    background: #f5f5f56b;
+}
+.remark_info{
+    margin-left: 40px;
+}
+.remark_text{
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+.reply_news{
+    height: 60px;
+    border-bottom: 1px dashed;
+    background: #a9a9a959;
+    padding-top: 5px;
+}
+.reply_news:hover{
+    background: rgba(169, 169, 169, 0.19);
+}
+.reply_news .reply_tit{
+    float: left;
+    text-indent: 10px;
+    width: 80px;
+}
+.reply_news .reply_content{
+    float: left;
+    width: 650px;
+    color: dimgray;
+    line-height: 20px;
+}
+.no_text{
+    text-align: center;
+    padding-top: 30px;
+    height: 585px;
+}
+.no_txt{
+    text-align: center;
+}
+.no_img{
+    background-image: url("../../public/image/no_remark.png");
+    width: 153px;
+    height: 132px;
+    margin: 0 auto;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.no_txt p{
+    margin-top: 25px;
+    color: #848484;
+}

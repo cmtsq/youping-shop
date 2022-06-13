@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理</title>
+    <link rel="stylesheet" href="../../public/CSS/admin_index.css">
+    <link rel="stylesheet" href="../../public/CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="../../public/CSS/font-awesome.min.css">
+    <script src="../../public/JS/jquery.min.js"></script>
+    <script src="../../public/JS/bootstrap.min.js"></script>
+    <script src="../../public/JS/echarts.js"></script>
+</head>
+<body>
+<div class="admin_main_index">
+    <div class="admin_main_top">
+        <div class="admin_data">
+            <div class="admin_data_icon">
+                <i class="fa fa-users" aria-hidden="true"></i>
+            </div>
+            <div class="admin_data_content">
+                <h2>68500</h2>
+                <p>用户总数</p>
+            </div>
+        </div>
+        <div class="admin_data">
+            <div class="admin_data_icon">
+                <i class="fa fa-tags" aria-hidden="true"></i>
+            </div>
+            <div class="admin_data_content">
+                <h2>12080</h2>
+                <p>今日收入</p>
+            </div>
+        </div>
+        <div class="admin_data">
+            <div class="admin_data_icon">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            </div>
+            <div class="admin_data_content">
+                <h2>4008</h2>
+                <p>今日销售量</p>
+            </div>
+        </div>
+        <div class="admin_data">
+            <div class="admin_data_icon">
+                <i class="fa fa-line-chart" aria-hidden="true"></i>
+            </div>
+            <div class="admin_data_content">
+                <h2>65824</h2>
+                <p>总成交额</p>
+            </div>
+        </div>
+    </div>
+    <div class="admin_main_left" id="mains"></div>
+    <div class="admin_main_right">
+        <div class=admin_expend>
+            <div class="admin_expend_list">
+                <p>金额收入： 65824元</p>
+                <p>金额支出： 34412元</p>
+                <p>利润：  31412元</p>
+            </div>
+            <div class="admin_expend_bottom">
+                <p>26.83%<span> 资金拨出</span></p>
+            </div>
+        </div>
+        <div class=admin_expend>
+            <div class="admin_expend_list">
+                <p>今日收入： 135666元</p>
+                <p>今日支出： 89521元</p>
+                <p>利润：  120000元</p>
+            </div>
+            <div class="admin_expend_bottom">
+                <p>33.33%<span> 今日拨出</span></p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../../public/JS/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+    function dataImg() {
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('mains'));
+        var goodsID = new Array();
+        var support = new Array();
+        '<%supportList.forEach((item)=>{%>'
+        goodsID.push('<%=item.goodsID%>');
+        support.push('<%=item.support%>');
+        '<%})%>'
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: '商品受欢迎热度统计概况'
+            },
+            tooltip: {},
+            legend: {
+                data: ['支持数']
+            },
+            xAxis: {
+                data: goodsID
+            },
+            yAxis: {},
+            series: [
+                {
+                    name: '支持数',
+                    type: 'bar',
+                    data: support
+                }
+            ]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    }
+    dataImg();
+</script>
+</html>

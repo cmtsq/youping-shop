@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理</title>
+    <link rel="stylesheet" href="../../public/CSS/admin_index.css">
+    <link rel="stylesheet" href="../../public/CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="../../public/CSS/font-awesome.min.css">
+    <script src="../../public/JS/jquery.min.js"></script>
+    <script src="../../public/JS/bootstrap.min.js"></script>
+</head>
+<body>
+<div id="main">
+    <!--头部-->
+    <header>
+        <h3>有品管理系统</h3>
+        <div class="back_personal">
+            <div class="admin_head">
+                <img src="../../public/image/{{admin.admin_head}}" height="100%" width="100%">
+            </div>
+            <div class="admin_personal">
+                <p class="welcome_user">你好！{{admin.admin_name}}</p>
+                <p class="operation">
+                    <span class="operation_head"><a>修改头像</a></span>
+                    <span class="operation_pass"><a>更改密码</a></span>
+                    <span class="operation_out"><a href="/admin/admin_login">退出</a></span>
+                </p>
+            </div>
+        </div>
+    </header>
+    <!--左侧导航栏-->
+    <div class="admin_nav">
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                            <i class="fa fa-list" aria-hidden="true"></i> 后台首页
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse in">
+                    <div class="panel-body"><a href="/admin/admin_index" target="adminFrame">后台首页</a></div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                            <i class="fa fa-list" aria-hidden="true"></i> 用户管理
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse">
+                    <div class="panel-body"><a href="/admin/admin_customer" target="adminFrame">用户列表</a></div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                            <i class="fa fa-list" aria-hidden="true"></i> 商品管理
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse">
+                    <div class="panel-body"><a href="/admin/admin_goods?page=1" target="adminFrame">商品列表</a></div>
+                    <div class="panel-body"><a href="/admin/admin_goods_type"  target="adminFrame">商品分类</a></div>
+                    <div class="panel-body"><a href="/admin/admin_search" target="adminFrame">商品查询</a></div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                            <i class="fa fa-list" aria-hidden="true"></i> 订单管理
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseFour" class="panel-collapse collapse">
+                    <div class="panel-body"><a href="/admin/admin_order?page=1" target="adminFrame">订单列表</a></div>
+                    <div class="panel-body"><a href="/admin/admin_sendHandel" target="adminFrame">发货处理</a></div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
+                            <i class="fa fa-list" aria-hidden="true"></i> 评价管理
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseFive" class="panel-collapse collapse">
+                    <div class="panel-body"><a href="/admin/admin_evaluate?page=1" target="adminFrame">评价中心</a></div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseSix">
+                            <i class="fa fa-list" aria-hidden="true"></i> 系统管理
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseSix" class="panel-collapse collapse">
+                    <div class="panel-body"><a href="" id="close">退出后台</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--右侧主体内容-->
+    <div class="admin_main">
+        <div class="admin_main_more">
+            <iframe name="adminFrame" src="/admin/admin_index"></iframe>
+        </div>
+        <div class="admin_update" style="display: none">
+            <form action="/admin/doUpdateHead" method="post">
+                <div class="update_admin_head">
+                    <div class="con4">
+                        <span class="upload"><input type="file" name="admin_head_img" class="upload_pic" id="upload"></span>
+                        <canvas id="cvs" width="200" height="200"></canvas>
+                    </div>
+                </div>
+                <div class="update_btn">
+                    <button type="submit" class="btn btn-primary">确认修改</button>
+                </div>
+            </form>
+        </div>
+        <div class="admin_update"  style="display: none">
+            <form action="/admin/doUpdatePass" method="post">
+                <div class="update_admin_pass">
+                    <p><input type="password" class="form-control" placeholder="原密码:" name="oldPass"></p>
+                    <p><input type="password" class="form-control" placeholder="新密码:" name="newPass"></p>
+                </div>
+                <div class="update_btn">
+                    <button type="submit" class="btn btn-primary">确认修改</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../../public/JS/jquery-1.12.4.js"></script>
+<script>
+    //关闭页面
+    $("#close").click(function () {
+        if (confirm("您确定要关闭本页吗？")) {
+            window.close();
+        }
+    });
+    $('.operation_head a').click(function () {
+        $('.admin_update:eq(0)').show();
+        $('.admin_update:eq(1)').hide();
+    });
+    $('.operation_pass a').click(function () {
+        $('.admin_update:eq(1)').show();
+        $('.admin_update:eq(0)').hide();
+    });
+    //上传头像
+    //获取上传按钮
+    var input1 = document.getElementById("upload");
+    if(typeof FileReader === 'undefined') {
+        //result.innerHTML = "抱歉，你的浏览器不支持 FileReader";
+        input1.setAttribute('disabled', 'disabled');
+    } else {
+        input1.addEventListener('change', readFile, false);
+    }
+    function readFile() {
+        var file = this.files[0]; //获取上传文件列表中第一个文件
+        if(!/image\/\w+/.test(file.type)) {
+            //图片文件的type值为image/png或image/jpg
+            alert("文件必须为图片！");
+            return false;
+        }
+        // console.log(file);
+        var reader = new FileReader(); //实例一个文件对象
+        reader.readAsDataURL(file); //把上传的文件转换成url
+        //当文件读取成功便可以调取上传的接口
+        reader.onload = function(e) {
+            var image = new Image();
+            // 设置src属性
+            image.src = e.target.result;
+            var max = 200;
+            // 绑定load事件处理器，加载完成后执行，避免同步问题
+            image.onload = function() {
+                // 获取 canvas DOM 对象
+                var canvas = document.getElementById("cvs");
+                // 获取 canvas的 2d 环境对象,
+                var ctx = canvas.getContext("2d");
+                // canvas清屏
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.drawImage(image, 0, 0, 200, 200);
+            };
+        }
+    };
+</script>
+</html>

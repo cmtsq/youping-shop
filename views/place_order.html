@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../public/CSS/font-awesome.min.css">
+    <link rel="stylesheet" href="../public/CSS/place_order.css">
+    <link rel="stylesheet" href="../public/CSS/index.css">
+    <script src="../public/JS/jquery.min.js"></script>
+    <script src="../public/JS/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../public/CSS/bootstrap.min.css">
+</head>
+<body>
+<!--头部-->
+<header>
+    <div class="head_auto">
+        <ul class="roof">
+            {{if user_name}}
+            <li>
+                <div class="headshot"><img src="../public/image/{{userList.user_head}}" width="100%" height="100%"></div>
+                <div class="nickname dropdown">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                        {{userList.user_name}}  <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                    </a>
+                    <ul class="dropdown-menu drop_min">
+                        <li><a href="/personal/people"><i class="fa fa-user" aria-hidden="true"></i> 个人中心</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#"><i class="fa fa-question-circle" aria-hidden="true"></i> 其他帮助</a></li>
+                        <li class="divider"></li>
+                        <li><a href="/user/logout"><i class="fa fa-sign-out" aria-hidden="true"></i> 退出登录</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#"><i class="fa fa-cog" aria-hidden="true"></i> 设置</a></li>
+                    </ul>
+                </div>
+            </li>
+            {{else}}
+            <li><a href="/user/login">登录</a></li>
+            {{/if}}
+            <span>|</span>
+            <li><a href="">帮助中心</a></li><span>|</span>
+            <li><a href=""><i class="fa fa-mobile" aria-hidden="true" style="font-size: 20px;vertical-align: middle;"></i> 下载APP</a></li><span>|</span>
+            <li class="drop_down">
+                <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                    资质证照/协议规则  <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                </a>
+                <ul class="dropdown-menu drop_max">
+                    <li><a href="#">资质证照</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">协议规则</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</header>
+<!--搜索-->
+<div class="search">
+    <div class="search-top">
+        <div class="logo"><a href="/goods/index"><img src="../public/image/logo.png"></a></div>
+        <div class="shoppingCart-icon">
+            <a href="/cart/showCart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+        </div>
+        <form action="/goods/doSearchGoods" method="post">
+            <div class="searcher">
+                <button><i class="fa fa-search" aria-hidden="true"></i></button>
+                <input type="search" placeholder="请输入搜索词" name="search">
+            </div>
+        </form>
+    </div>
+</div>
+<!--下单部分-->
+<div class="place_content">
+
+        <div class="contain">
+            <div class="inner_nav">
+                <span><a href="index.html">首页</a></span> >
+                <span><a href="shopping_cart.html">购物车</a></span> >
+                <span><a href="place_order.html" style="color: #CCCCCC">结算</a></span>
+            </div>
+            <div class="select_address">
+                <div class="address_title">收货地址</div>
+                <div class="address_list">
+                    {{each addressList address}}
+                    <div class="address_list_item">
+                        <input type="hidden" value="{{address.addressID}}">
+                        <div class="address_item_content">
+                            <div class="address_message">
+                                <p class="address_name">{{address.name}}</p>
+                                <p class="address_tel">{{address.tel}}</p>
+                                <p class="address_place">{{address.address}}</p>
+                            </div>
+                            <div class="address_button">
+                                <a href="">修改</a>
+                                <a href="">删除</a>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+            <form action="/personal/confirmOrder" method="post">
+                <div class="place_goods">
+                {{each cartGoods item}}
+                <div class="place_goods_message">
+                    <input type="hidden" value="{{item.goodsID}}" class="goodsID">
+                    <span class="place_goods_img">
+                    <img src="../public/image/{{item.goods_img}}" >
+                    </span>
+                    <span class="place_goods_tit">
+                    <span class="place_goods_title">{{item.goods_name}}</span>
+                    </span>
+                    <span class="place_goods_total">
+                    <span>￥</span>
+                    <span class="txt">{{item.price_new*item.goods_num}}</span>
+                    </span>
+                    <span class="place_goods_price">
+                    ￥
+                    <span class="pri">{{item.price_new}}</span>
+                    X
+                    <span class="digit">{{item.goods_num}}</span>
+                    </span>
+                </div>
+                {{/each}}
+                <div class="place_ship">
+                <span class="left_ship">
+                    售后免邮
+                    <a href=""><img src="../public/image/plaint.png"></a>
+                </span>
+                    <span class="ship">
+                    商家增送
+                </span>
+                </div>
+                <div class="leave_message">
+                    <span class="leave_left">买家留言</span>
+                    <span class="message">
+                    <textarea type="text" class="user_message" placeholder="填写内容需与商家协商并确认，45字以内" maxlength="45"></textarea>
+                </span>
+                </div>
+                </div>
+                <div class="place_checkout">
+                <div class="place_count">
+                    <span class="place_count_info">商品件数：</span>
+                    <span class="place_count_value">0</span>
+                </div>
+                <div class="place_total">
+                    <span class="place_total_info">合计：</span>
+                    <span class="place_total_value">0</span>元
+                </div>
+                <div class="place_bottom_pay">
+                    <input type="submit" value="确认订单">
+                </div>
+            </div>
+            </form>
+        </div>
+</div>
+<!--footer-->
+<footer>
+    <div class="contain">
+        <div class="logo"><a href="/goods/index"><img src="../public/image/logo.png"></a></div>
+        <div class="f_icon"><img src="../public/image/f_logo.png"></div>
+    </div>
+</footer>
+</body>
+<script src="../public/JS/jquery-1.12.4.js"></script>
+<script>
+    function mouse() {
+        var result = new Array();
+        '<%cartGoods.forEach((item)=>{%>'
+        result.push('<%=item.goodsID%>');
+        '<%})%>'
+        $(".address_list_item").click(function () {
+            $(this).css("border", "1px solid #845f3f");
+            $(this).siblings().css("border", "none");
+            //方法一:
+            // $.post('/personal/confirmOrder',{
+            //     goodsID:result.join(','),
+            //     addressID:$(this).children('input').val(),
+            //     order_num:$('.place_count_value').text(),
+            //     order_price:$('.place_total_value').text()
+            // },(data,status)=>{
+            //     $('.place_bottom_pay input').click(function () {
+            //         document.write(data);
+            //     });
+            // });
+            /*方法三
+            * var goodsId = $('.goodsID').map(function () { return $(this).val(); }).get();
+            */
+            //方法二
+            $.ajax({
+                type: 'post',
+                url: '/personal/confirmOrder',
+                traditional: true,//结果深度化，可以传结果集
+                data: {
+                    goodsID: result,
+                    addressID: $(this).children('input').val(),
+                    order_num: $('.place_count_value').text(),
+                    order_price: $('.place_total_value').text(),
+                },
+                success: function (data) {
+                    $('.place_bottom_pay input').click(function () {
+                        document.write(data);
+                    });
+                }
+            });
+        });
+    }
+    mouse();
+    function place_getTotal(){
+        let count=0;
+        let money=0;
+        $('.txt').each(function (i,ele) {
+            money+=parseFloat($(ele).text());//获取总价
+        });
+        $('.digit').each(function (i,ele) {
+            count+=Number($(ele).text());//获取数量
+        });
+        $('.place_count_value').text(count);
+        $('.place_total_value').text(money.toFixed(2));
+    }
+    place_getTotal();
+</script>
+</html>

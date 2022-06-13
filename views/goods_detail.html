@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../public/CSS/goods_detail.css">
+    <link rel="stylesheet" href="../public/CSS/index.css">
+    <link rel="stylesheet" href="../public/CSS/font-awesome.min.css">
+    <link rel="stylesheet" href="../public/CSS/bootstrap.css">
+    <script src="../public/JS/jquery.min.js"></script>
+    <script src="../public/JS/bootstrap.min.js"></script>
+</head>
+<body>
+<!--头部-->
+<header>
+    <div class="head_auto">
+        <ul class="roof">
+            {{if user_name}}
+            <li>
+                <div class="headshot"><img src="../public/image/{{userList.user_head}}" width="100%" height="100%"></div>
+                <div class="nickname dropdown">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                        {{userList.user_name}}  <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                    </a>
+                    <ul class="dropdown-menu drop_min">
+                        <li><a href="/personal/people"><i class="fa fa-user" aria-hidden="true"></i> 个人中心</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#"><i class="fa fa-question-circle" aria-hidden="true"></i> 其他帮助</a></li>
+                        <li class="divider"></li>
+                        <li><a href="/user/logout"><i class="fa fa-sign-out" aria-hidden="true"></i> 退出登录</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#"><i class="fa fa-cog" aria-hidden="true"></i> 设置</a></li>
+                    </ul>
+                </div>
+            </li>
+            {{else}}
+            <li><a href="/user/login">登录</a></li>
+            {{/if}}
+            <span>|</span>
+            <li><a href="">帮助中心</a></li><span>|</span>
+            <li><a href=""><i class="fa fa-mobile" aria-hidden="true" style="font-size: 20px;vertical-align: middle;"></i> 下载APP</a></li><span>|</span>
+            <li class="drop_down">
+                <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                    资质证照/协议规则  <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                </a>
+                <ul class="dropdown-menu drop_max">
+                    <li><a href="#">资质证照</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">协议规则</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</header>
+<!--搜索-->
+<div class="search">
+    <div class="search-top">
+        <div class="logo"><a href="/goods/index"><img src="../public/image/logo.png"></a></div>
+        <div class="shoppingCart-icon">
+            <a href="/cart/showCart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+        </div>
+        <form action="/goods/doSearchGoods" method="post">
+            <div class="searcher">
+                <button><i class="fa fa-search" aria-hidden="true"></i></button>
+                <input type="search" placeholder="请输入搜索词" name="search">
+            </div>
+        </form>
+    </div>
+</div>
+<!--商品详情-->
+<div class="detail">
+    <div class="contain">
+        <div class="detail_goods">
+            <div class="detail_goods_img">
+                <div class="img_main" id="small">
+                    <img src="../public/image/{{detail.goods_img}}" height="100%" width="100%" id="showing">
+                    <div id="mark"></div>
+                </div>
+                <div id="big">
+                    <img src="../public/image/{{detail.goods_img}}" id="marks">
+                </div>
+                <div class="img_other">
+                    <span class="up"><i class="fa fa-chevron-up" aria-hidden="true"></i></span>
+                    <div class="img_other_contain">
+                        <div class="img_other_box">
+                            {{each detailImg detailImgList}}
+                            <div class="contain_img"><img src="../public/image/{{detailImgList.image}}" height="100%" width="100%"></div>
+                            {{/each}}
+                        </div>
+                    </div>
+                    <span class="down"><i class="fa fa-chevron-down" aria-hidden="true"></i></span>
+                </div>
+            </div>
+            <form action="/cart/doAddCart" method="post">
+                <input type="hidden" name="goodsID" value="{{detail.goodsID}}">
+                <div class="detail_goods_content">
+                    <div class="goods_text">
+                        <div class="goods_name">{{detail.goods_name}}</div>
+                        <div class="goods_detail">{{detail.goods_detail}}</div>
+                        <div class="goods_discount">
+                            <span class="pro_tit">优惠券</span>
+                            <span class="pro_txt">20元酷轻松智能护腰带20元限量立减券</span>
+                        </div>
+                    </div>
+                    <div class="discount_price">
+                        <div class="line_price">
+                            <h5 class="sku_title">售价</h5>
+                            <div class="price">
+                                <span class="money_symbol">¥</span>
+                                <span class="value">{{detail.price_new}}</span>
+                            </div>
+                        </div>
+                        <div class="address_line">
+                            <h5 class="sku_title">物流</h5>
+                            <span class="sku_content">预计2021年11月29日前发货</span>
+                        </div>
+                    </div>
+                    <div class="progress_line">
+                        <div class="crowd_text">
+                            <p class="support_count">{{detail.support}}<span class="support_sp"> 人支持</span>
+                            <p class="pro_re">热</p>
+                        </div>
+                    </div>
+                    <div class="goods_num">
+                        <div class="goods_number">
+                            <h5 class="sku_title">数量</h5>
+                            <div class="frame" style="margin-top: 10px">
+                                <span class="minus">-</span>
+                                <input type="text" class="count_input" name="number" value="1" readonly="readonly">
+                                <span class="plus">+</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="goods_btn">
+                        <div class="add_shoppingCart"><input type="submit" value="加入购物车" style="border: 1px solid #845f3f;"></div>
+                        {{if collectGoodsID}}
+                            <div class="collected">
+                            <div class="collect_false">
+                                <span></span>
+                                <p>已收藏</p>
+                            </div>
+                        </div>
+                        {{else}}
+                            <div class="collect">
+                            <div class="collect_false">
+                                <span></span>
+                                <p>收藏</p>
+                            </div>
+                        </div>
+                        {{/if}} &ensp;
+                        <div class="service collect">
+                            <div>
+                                <a href=""></a>
+                                <p>客服</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="detail_content">
+            <div class="detail_explain">
+                <div class="detail_tit">
+                    <ul class="detail_nav">
+                        <li class="nav1">商品描述</li>
+                        <li class="nav2">评论</li>
+                    </ul>
+                </div>
+                <div class="detail_matter" style="display: none">
+                    {{each descImg descImgList}}
+                    <img src="../public/image/{{descImgList.image}}" height="100%" width="100%">
+                    {{/each}}
+                </div>
+                <div class="detail_comment" style="display: block">
+                    {{if remark[0]}}
+                    <div class="comment_content">
+                        {{each remark remarkList}}
+                        <div class="comment_item">
+                            <div class="user_head">
+                                <div class="user_img"><img src="../public/image/{{remarkList.user_head}}" height="100%" width="100%"></div>
+                                <div class="user_info">
+                                    <div class="user_name">{{remarkList.user_name}}</div>
+                                    <div class="comment_time">{{remarkList.remark_time.toLocaleString()}}</div>
+                                </div>
+                            </div>
+                            <div class="r_comment">{{remarkList.remark_content}}</div>
+                            <div class="img_comment">
+                                <div class="img_item">
+                                    <img src="../public/image/{{remarkList.remark_img}}" height="100%" width="100%">
+                                </div>
+                            </div>
+                            {{if remarkList.reply_time}}
+                            <div class="reply">
+                                <p class="reply_title">
+                                    <span class="reply_tit">商家回复:</span>
+                                    <span class="reply_time">{{remarkList.reply_time.toLocaleString()}}</span>
+                                </p>
+                                <p class="reply_text">
+                                    {{remarkList.reply_content}}
+                                </p>
+                            </div>
+                            {{/if}}
+                            <div class="bottom_line"></div>
+                        </div>
+                        {{/each}}
+                    </div>
+                    <!--分页-->
+                    <div class="com_page">
+                        <ul class="pagination">
+                            <li><a href="/goods/goods_detail?goodsID={{detail.goodsID}}&page=<%=page-1%>" id="pPage">上一页</a></li>
+                            <%for(var i=1;i<=pageCount;i++){%>
+                            <li><a href="/goods/goods_detail?goodsID={{detail.goodsID}}&page={{i}}">{{i}}</a></li>
+                            <%}%>
+                            <li><a href="/goods/goods_detail?goodsID={{detail.goodsID}}&page=<%=page+1%>" id="nPage">下一页</a></li>
+                        </ul>
+                    </div>
+                    {{else}}
+                    <div class="no_text">
+                        <div class="no_txt">
+                            <div class="no_img"></div>
+                            <p>太冷清了，没有评论喔</p>
+                        </div>
+                    </div>
+                    {{/if}}
+                </div>
+            </div>
+            <div class="recommend">
+                <h2><span class="special_line"></span>分类推荐<span class="special_line"></span></h2>
+                {{each recommend recommendList}}
+                <div class="re_product">
+                    <a href="/goods/goods_detail?goodsID={{recommendList.goodsID}}&page=1">
+                        <div class="product_img">
+                            <div class="re_img">
+                                <div class="img_container">
+                                    <img src="../public/image/{{recommendList.goods_img}}" width="100%" height="100%">
+                                </div>
+                            </div>
+                        </div>
+                        <p title="{{recommendList.goods_detail}}">{{recommendList.goods_detail}}</p>
+                        <h5>{{recommendList.goods_name}}</h5>
+                        <h4>
+                            <span class="dollar">￥</span>
+                            <span class="price_pro">{{recommendList.price_new}}</span>
+                        </h4>
+                    </a>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</div>
+<!--footer-->
+<footer>
+    <div class="contain">
+        <div class="logo"><a href="/goods/index"><img src="../public/image/logo.png"></a></div>
+        <div class="f_icon"><img src="../public/image/f_logo.png"></div>
+    </div>
+</footer>
+</body>
+<script src="../public/JS/jquery-1.12.4.js"></script>
+<script>
+    //收藏
+    function collectCut() {
+        var detailGoodsID = '<%=detail.goodsID%>';
+        $('.collect').click(function () {
+            $.get('/goods/collect',{detailGoodsID:detailGoodsID},function (data,status) {
+                document.write(data);
+            });
+        });
+        $('.collected').click(function () {
+            $.get('/goods/cancelCollect',{detailGoodsID:detailGoodsID},function (data,status) {
+                document.write(data);
+            });
+        });
+    }
+    collectCut();
+    //商品描述与评论的切换
+    function cut(){
+        $(".detail_nav li").click(function () {
+            var index = $(this).index();
+            if(index == 0)
+            {
+                $(".detail_matter").show();
+                $(".detail_comment").hide();
+                $(".nav1").css("border-bottom","2px solid #845f3f");
+                $(".nav2").css("border-bottom","none");
+            }else{
+                $(".detail_matter").hide();
+                $(".detail_comment").show();
+                $(".nav2").css("border-bottom","2px solid #845f3f");
+                $(".nav1").css("border-bottom","none");
+            }
+        });
+    }
+    cut();
+    //放大镜
+    function zoom() {
+        $('#small').mouseover(function () {
+            $('#big').css('display','block');
+            $('#mark').css('display','block');
+        });
+        //当鼠标在缩略图窗口中移动时
+        $('#small').mouseover(function (e) {
+            //1.实现“放大镜”框跟随鼠标移动的功能
+            //获取鼠标当前位置
+            var pageX = e.pageX;
+            var pageY = e.pageY;
+
+            //获取缩略图在页面中的偏移位置
+            var offsetX = $('#small').offset().left;
+            var offsetY = $('#small').offset().top;
+            // 计算鼠标在缩略图中相对位置
+            var relativeX = pageX - offsetX;
+            var relativeY = pageY - offsetY;
+            //根据鼠标位置计算“放大镜”框的位置
+            var magOffsetX = $('#mark').width()/2;
+            var magOffsetY = $('#mark').height()/2;
+            $('#mark').css({
+                left: relativeX - magOffsetX + 'px',
+                top: relativeY - magOffsetY + 'px'
+            });
+            //获取"放大镜"框的新位置
+            var magX = $('#mark').position().left;
+            var magY = $('#mark').position().top;
+
+            //2.处理越界情况
+            //确定边界
+            var maxMagX = $('#small').width()-$('#mark').width();
+            var maxMagY = $('#small').height()-$('#mark').height();
+            //左边界
+            if(magX<=0){
+                $('#mark').css('left','0px');
+            }
+            //右边界
+            if(magX>=maxMagX){
+                $('#mark').css('left',maxMagX+'px');
+            }
+            //上边界
+            if(magY<=0){
+                $('#mark').css('top','0px');
+            }
+            //下边界
+            if(magY>=maxMagY){
+                $('#mark').css('top',maxMagY+'px');
+            }
+            //3.实现“原图”中图片随“放大镜”框的移动而相应移动
+            //按照之前确定的缩放比例移动“原图”窗口中的图片
+            //注：图片的移动方向与鼠标的移动方向是相反的！
+            var bigX = magX*2.5;
+            var bigY = magY*2.5;
+            $('#big img').css({
+                left: -bigX + 'px',
+                top: -bigY + 'px'
+            });
+        });
+        //当鼠标离开时
+        $('#small').mouseout(function () {
+            $('#big').css('display','none');
+            $('#mark').css('display','none');
+        })
+    }
+    zoom();
+    //数量的增减
+    function addSub() {
+        $('.minus').click(function () {
+            var num = Number($('.count_input').val());
+            if(num==1){
+                return;
+            }else{
+                $('.count_input').val(num-1);
+            }
+        });
+        $('.plus').click(function () {
+            var num = Number($('.count_input').val());
+            $('.count_input').val(num+1)
+        })
+    }
+    addSub();
+    //详情图的上下切换
+    function switchover() {
+        var heightDiv = $('.contain_img').outerHeight(true);
+        var numDiv = $('.contain_img').length;
+        $('.img_other_box').css('width',heightDiv*numDiv);
+        var flag=true;
+        $('.up').click(function () {
+            if(flag){
+                flag=false;
+                $('.img_other_box').find('.contain_img').eq(numDiv-1).prependTo($('.img_other_box'));
+                $('.img_other_box').css({'marginTop':-heightDiv}).delay(0).queue(function () {
+                    $('.img_other_box').animate({'marginTop':0});
+                    flag=true;
+                    $(this).dequeue();
+                })
+            }
+        });
+        $('.down').click(function () {
+            if (flag){
+                flag=false;
+                $('.img_other_box').animate({'marginTop':-heightDiv}).delay(0).queue(function () {
+                    $('.img_other_box').find('.contain_img').eq(0).appendTo($('.img_other_box'));
+                    $('.img_other_box').css({'marginTop':0});
+                    flag=true;
+                    $(this).dequeue();
+                })
+            }
+        })
+    }
+    switchover();
+    $('.img_other').mouseover(function () {
+        $('.up').css('display','block');
+        $('.down').css('display','block');
+    });
+    $('.img_other').mouseout(function () {
+        $('.up').css('display','none');
+        $('.down').css('display','none');
+    });
+    $('.contain_img').click(function () {
+        $(this).css("border","1px solid #845f3f");
+        $(this).siblings().css("border","none");
+    });
+    //主图与详情图的切换
+    $(".contain_img img").click(function () {
+        $("#showing").attr("src",$(this).attr("src"));//实现刷新图片
+        $("#marks").attr("src",$(this).attr("src"));//实现刷新图片
+    });
+    //分页
+    if('{{remark[0]}}'){
+        var page = '<%=page%>';
+        var pageCount = '<%=pageCount%>';
+        if(page == 1){
+            document.getElementById('pPage').onclick = function () {
+                return false;
+            };
+        }
+        if(page == pageCount){
+            document.getElementById('nPage').onclick = function () {
+                return false;
+            };
+        }
+    }
+</script>
+</html>

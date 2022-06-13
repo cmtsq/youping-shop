@@ -1,0 +1,87 @@
+/*收藏内容部分*/
+.main_collect{
+    font-size: 16px;
+    padding: 11px 0 11px 60px;
+    min-height: 500px;
+}
+.main_collect section{
+    position: relative;
+    display: block;
+    overflow: hidden;
+    color: #4a4a4a;
+}
+.collect_title{
+    padding: 25px 0 10px;
+    margin: 0 30px 0 0;
+    border-bottom: 1px solid #e7e7e7;
+}
+.collect_title p{
+    color: #845f3f;
+    font-size: 18px;
+    font-weight: 400;
+}
+.collect_content_goods{
+    padding: 10px 32px 10px 0!important;
+    line-height: 120px;
+    border-bottom: 1px dashed #e7e7e7;
+    overflow: hidden;
+}
+.collect_goods_img{
+    width: 120px;
+    height: 120px;
+    position: relative;
+    overflow: hidden;
+    margin-right: 25px;
+    float: left;
+    cursor: pointer;
+}
+.collect_goods_text{
+    height: 120px;
+    line-height: 120px;
+    float: left;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+.collect_goods_button{
+    float: right;
+    position: relative;
+    display: block;
+    padding: 0 20px 10px 0;
+}
+.collect_goods_button a{
+    color: #666;
+    border: 1px solid #666;
+    height: 36px;
+    line-height: 34px;
+    font-size: 16px;
+    width: 110px;
+    display: inline-block;
+    border-radius: 2px;
+    text-align: center;
+    padding: 0 6px;
+    transition: all .5s cubic-bezier(0,1,.5,1);
+}
+.collect_goods_button a:hover{
+    color: white;
+    background-color: #845f3f;
+}
+.no_text{
+    text-align: center;
+    margin-top: 70px;
+}
+.no_txt{
+    text-align: center;
+}
+.no_img{
+    background-image: url("../../public/image/no-collect.png");
+    width: 153px;
+    height: 132px;
+    margin: 0 auto;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.no_txt p{
+    margin-top: 25px;
+    color: #848484;
+}

@@ -1,0 +1,109 @@
+/*地址管理部分*/
+.main_address{
+    font-size: 16px;
+    padding: 11px 0 11px 60px;
+    min-height: 500px;
+}
+.main_address section{
+    position: relative;
+    display: block;
+    overflow: hidden;
+    color: #4a4a4a;
+}
+.address_title{
+    padding: 25px 0 10px;
+    margin: 0 30px 0 0;
+    border-bottom: 1px solid #e7e7e7;
+}
+.address_title p{
+    color: #845f3f;
+    font-size: 18px;
+    font-weight: 400;
+}
+.address_list{
+    padding-top: 15px;
+    color: #4a4a4a;
+    min-height: 500px;
+}
+.address_list_item{
+    width: 250px;
+    background: #fff;
+    float: left;
+    margin-bottom: 10px;
+    height: 140px;
+    position: relative;
+    margin-left: 10px;
+    border: 1px solid #e7e7e7;
+}
+.address_list_item:hover{
+    border: 1px solid #845f3f;
+}
+.address_list_item:first-of-type{
+    margin-left: 0;
+}
+.address_message{
+    margin: 20px 0 0 30px;
+}
+.address_name{
+    color: #333;
+    font-size: 16px;
+}
+.address_tel{
+    color: #333;
+    margin-top: 15px;
+    font-size: 13px;
+}
+.address_place{
+    color: #999;
+    margin-top: 0;
+    font-size: 13px;
+}
+.address_button{
+    right: 5px;
+    bottom: 5px;
+    position: absolute;
+    display: none;
+}
+.address_button a{
+    font-size: 14px;
+    color: #845f3f;
+    padding: 5px;
+}
+.address_add:hover div{
+    color: #845f3f;
+}
+.add_icon{
+    margin-top: 24px;
+    text-align: center;
+}
+.add_icon div{
+    height: 35px;
+    margin: 0 auto;
+    cursor: default;
+    color: gainsboro;
+    font-size: 50px;
+}
+.add_text{
+    margin: 10px auto 0;
+    text-align: center;
+    color: #ccc;
+    font-size: 14px;
+}
+.address_message p input{
+    width: 140px;
+    border: none;
+    border-bottom: 1px solid #845f3f;
+}
+.address_message p input:focus{
+    outline: none;
+}
+.address_place input{
+    margin-top: 10px;
+}
+.address_button button{
+    font-size: 14px;
+    color: #845f3f;
+    padding: 5px;
+    border: none;
+    background: none;
+}

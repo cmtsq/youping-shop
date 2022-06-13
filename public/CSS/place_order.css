@@ -1,0 +1,249 @@
+.inner_nav{
+    padding: 30px 0;
+    width: 100%;
+    display: block;
+    float: none;
+    background: transparent repeat 0 0 none;
+    font-size: 13px;
+}
+.inner_nav span{
+    font-size: 13px;
+}
+.inner_nav span a:hover{
+    text-decoration: none;
+}
+.address_title{
+    margin-bottom: 15px;
+    font-size: 19px;
+    color: #333;
+}
+.address_list{
+    color: #4a4a4a;
+    min-height: 200px;
+}
+.address_list_item{
+    width: 250px;
+    background: #fff;
+    float: left;
+    margin-bottom: 10px;
+    height: 140px;
+    position: relative;
+    margin-left: 10px;
+    border: 1px solid #e7e7e7;
+}
+.address_list_item:hover{
+    border: 1px solid #845f3f;
+}
+.address_list_item:first-of-type{
+    margin-left: 0;
+}
+.address_message{
+    margin: 20px 0 0 30px;
+}
+.address_name{
+    color: #333;
+    font-size: 16px;
+}
+.address_tel{
+    color: #333;
+    margin-top: 15px;
+    font-size: 13px;
+}
+.address_place{
+    color: #999;
+    margin-top: 0;
+    font-size: 13px;
+}
+.address_button{
+    right: 5px;
+    bottom: 5px;
+    position: absolute;
+    display: none;
+}
+.address_button a{
+    font-size: 14px;
+    color: #845f3f;
+    padding: 5px;
+}
+.address_add:hover div{
+    color: #845f3f;
+}
+.add_icon{
+    margin-top: 24px;
+    text-align: center;
+}
+.add_icon div{
+    height: 35px;
+    margin: 0 auto;
+    cursor: default;
+    color: gainsboro;
+    font-size: 50px;
+}
+.add_text{
+    margin: 10px auto 0;
+    text-align: center;
+    color: #ccc;
+    font-size: 14px;
+}
+.place_goods{
+    border: 1px solid #e7e7e7;
+    padding: 0 20px;
+}
+.place_goods_message{
+    position: relative;
+    height: 90px;
+    line-height: 90px;
+    box-sizing: border-box;
+    overflow: hidden;
+    border-bottom: 1px solid #e7e7e7;
+}
+.place_goods_img{
+    float: left;
+    height: 90px;
+    line-height: 90px;
+    width: 50px;
+}
+.place_goods_img img{
+    width: 50px;
+    height: 50px;
+    vertical-align: middle;
+}
+.place_goods_tit{
+    margin-left: 20px;
+    color: #333;
+    position: relative;
+    float: left;
+    height: 90px;
+    line-height: 90px;
+}
+.place_goods_title{
+    display: inline-block;
+    vertical-align: middle;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 400px;
+}
+.place_goods_total{
+    text-align: right;
+    width: 180px;
+    float: right;
+    height: 90px;
+    line-height: 90px;
+}
+.place_goods_total span{
+    float: right;
+    color: #c00000;
+}
+.txt{
+    color: #c00000;
+    margin-right: 3px;
+}
+.place_goods_price{
+    float: right;
+    height: 90px;
+    line-height: 90px;
+}
+.place_ship{
+    overflow: hidden;
+    margin: 36px 0 0 0;
+}
+.left_ship{
+    float: left;
+    height: 50px;
+    line-height: 50px;
+    font-size: 19px;
+    color: #333;
+}
+.left_ship a:hover{
+    text-decoration: none;
+}
+.left_ship a img{
+    margin-left: 5px;
+    margin-bottom: 2px;
+    vertical-align: middle;
+    border: none;
+    width: 16px;
+    height: 16px;
+}
+.ship{
+    margin-left: 51px;
+    line-height: 50px;
+    color: rgb(51, 51, 51);
+}
+.leave_message{
+    margin: 36px 0 0 0;
+    border-bottom: none;
+    overflow: hidden;
+}
+.leave_left{
+    float: left;
+    height: 50px;
+    line-height: 50px;
+    font-size: 19px;
+    color: #333;
+}
+.message{
+    margin-left: 51px;
+    float: left;
+}
+.user_message{
+    margin-top: 23px;
+    resize: none;
+    width: 762.5px;
+    height: 100px;
+    border: 1px solid #e7e7e7;
+    outline: none;
+    padding-left: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+    padding-top: 12px;
+    margin-bottom: 23px;
+}
+.place_checkout{
+    margin-top: 37px;
+    text-align: right;
+}
+.place_count{
+    margin-top: 37px;
+    margin-bottom: 20px;
+}
+.place_count span{
+    font-size: 18px;
+}
+.place_count_value{
+    margin-right: 20px;
+    color: #c00000;
+}
+.place_total{
+    margin-top: 37px;
+    margin-bottom: 20px;
+}
+.place_total span{
+    font-size: 18px;
+}
+.place_total_value{
+    margin-right: 20px;
+    color: #c00000;
+}
+.place_bottom_pay{
+    margin-top: 15px;
+    text-align: right;
+}
+.place_bottom_pay input{
+    color: #fff;
+    background-color: #845f3f;
+    width: 167px;
+    height: 52px;
+    line-height: 50px;
+    font-size: 20px;
+    border-radius: 2px;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 0 6px;
+    transition: all .5s cubic-bezier(0,1,.5,1);
+    border: none;
+}
+.place_bottom_pay input:hover{
+    background-color: rgba(132, 95, 63, 0.55);
+}

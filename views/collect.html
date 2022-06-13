@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../public/CSS/font-awesome.min.css">
+    <link rel="stylesheet" href="../public/CSS/collect.css">
+    <link rel="stylesheet" href="../public/CSS/index.css">
+</head>
+<body>
+<div class="main_collect">
+    <section>
+        <div class="collect_title">
+            <p>我的收藏</p>
+        </div>
+    </section>
+    <section>
+        <div class="collect_content">
+            {{if collectList[0]}}
+            {{each collectList collect}}
+            <div class="collect_content_goods">
+                <div class="collect_goods_img">
+                    <img src="../public/image/{{collect.goods_img}}" height="100%" width="100%">
+                </div>
+                <p class="collect_goods_text" title="{{collect.goods_name}}">
+                    {{collect.goods_name}}
+                </p>
+                <div class="collect_goods_button">
+                    <a href="/personal/delOneselfCollect?goodsID={{collect.goodsID}}">取消收藏</a>
+                    <a href="/goods/goods_detail?goodsID={{collect.goodsID}}&page=1" target="_blank">查看商品</a>
+                </div>
+            </div>
+            {{/each}}
+            {{else}}
+            <div class="no_text">
+                <div class="no_txt">
+                    <div class="no_img"></div>
+                    <p>这里没有任何东西</p>
+                </div>
+            </div>
+            {{/if}}
+        </div>
+    </section>
+</div>
+</body>
+</html>

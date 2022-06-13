@@ -1,0 +1,82 @@
+.admin_main_goods{
+    padding: 20px;
+}
+.link-nav{
+    text-align: left;
+}
+.link-nav>ul>li{
+    display: inline-block;
+    margin-left: 5px;
+    font-size: 16px;
+    color: darkgrey;
+}
+.link-nav a{
+    display: inline-block;
+    font-size: 16px;
+    color: black;
+}
+.link-nav a:hover{
+    text-decoration: none;
+}
+.form-wrap{
+    margin: 5px;
+    border: 1px solid rgba(0,0,0,0.2);
+    overflow: hidden;
+}
+.search-title{
+    text-align: left;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+.input-group{
+    width: 266px;
+    height: 30px;
+    border: 1px solid rgba(0,0,0,.5);
+    background: white;
+}
+.input-group>i{
+    float: left;
+    width: 28px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+}
+.form-control{
+    padding: 0 5px;
+    height: 28px;
+    width: 170px;
+    border: 0;
+    box-sizing: border-box;
+}
+.form-wrap>form{
+    margin-top: 10px;
+}
+.btn_search,.form-inline>div{
+    float: left;
+    margin: 10px;
+}
+.btn_search{
+    padding: 0 32px;
+    height: 30px;
+    background: #6589da;
+    border: 1px solid rgba(0,0,0,.1);
+    border-radius: 5px;
+    color: #eee;
+    margin-left: 150px;
+    margin-top: 40px;
+}
+.btn_search:hover{
+    color: #eee;
+    background-color: rgba(101, 137, 218, 0.71);
+}
+.admin_goods_data{
+    margin: 20px 5px;
+    border: 1px solid rgba(0,0,0,0.2);
+    padding: 20px;
+}
+th{
+    text-align: center;
+}
+td{
+    text-align: center;
+}

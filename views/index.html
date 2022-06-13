@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>有品生活</title>
+    <link rel="stylesheet" href="../public/CSS/index.css">
+    <link rel="stylesheet" href="../public/CSS/font-awesome.min.css">
+    <link rel="stylesheet" href="../public/CSS/bootstrap.css">
+    <script src="../public/JS/jquery.min.js"></script>
+    <script src="../public/JS/bootstrap.min.js"></script>
+</head>
+<body>
+<div id="main">
+    <!--头部-->
+    <header>
+        <div class="head_auto">
+            <ul class="roof">
+                {{if user_name}}
+                <li>
+                    <div class="headshot"><img src="../public/image/{{userList.user_head}}" width="100%" height="100%"></div>
+                    <div class="nickname dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                            {{userList.user_name}}  <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                        </a>
+                        <ul class="dropdown-menu drop_min">
+                            <li><a href="/personal/people"><i class="fa fa-user" aria-hidden="true"></i> 个人中心</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#"><i class="fa fa-question-circle" aria-hidden="true"></i> 其他帮助</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/user/logout"><i class="fa fa-sign-out" aria-hidden="true"></i> 退出登录</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#"><i class="fa fa-cog" aria-hidden="true"></i> 设置</a></li>
+                        </ul>
+                    </div>
+                </li>
+                {{else}}
+                <li><a href="/user/login">登录</a></li>
+                {{/if}}
+                <span>|</span>
+                <li><a href="">帮助中心</a></li><span>|</span>
+                <li><a href=""><i class="fa fa-mobile" aria-hidden="true" style="font-size: 20px;vertical-align: middle;"></i> 下载APP</a></li><span>|</span>
+                <li class="drop_down">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                        资质证照/协议规则  <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                    </a>
+                    <ul class="dropdown-menu drop_max">
+                        <li><a href="#">资质证照</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">协议规则</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <!--搜索-->
+    <div class="search">
+        <div class="search-top">
+            <div class="logo"><a href="/goods/index"><img src="../public/image/logo.png"></a></div>
+            <div class="shoppingCart-icon">
+                <a href="/cart/showCart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+            </div>
+            <form action="/goods/doSearchGoods" method="post">
+                <div class="searcher">
+                    <button><i class="fa fa-search" aria-hidden="true"></i></button>
+                    <input type="search" placeholder="请输入搜索词" name="search">
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--轮播-->
+    <div class="carousel">
+        <div class="left_nav">
+            <ul class="nav_list">
+                <li><span>有品推荐</span> / <span>手机数码</span></li>
+                <li><span>家用电器</span> / <span>智能家庭</span></li>
+                <li><span>美食酒饮</span> / <span>家具家装</span></li>
+                <li><span>电脑办公</span> / <span>出行车品</span></li>
+                <li><span>服装配饰</span> / <span>运动户外</span></li>
+                <li><span>健康保健</span> / <span>日用文创</span></li>
+                <li><span>美妆个护</span> / <span>鞋靴箱包</span></li>
+                <li><span>家纺餐厨</span> / <span>母婴亲子</span></li>
+            </ul>
+        </div>
+        <div class="right_carousel">
+            <div class="banner">
+                <div id="box">
+                    <img src="../public/image/lunbo01.jpeg" id="image">
+                    <ul id="list">
+                        <li index=1></li>
+                        <li index=2></li>
+                        <li index=3></li>
+                        <li index=4></li>
+                        <li index=5></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--四大区-->
+    <div class="nav">
+        <div class="nav_auto">
+            <ul>
+                <li><a href="">
+                    <div class="nav_banner"><img src="../public/image/nav02.png"></div>
+                    <p>有品众筹</p>
+                </a></li>
+                <li><a href="">
+                    <div class="nav_banner"><img src="../public/image/nav03.png"></div>
+                    <p>有品秒杀</p>
+                </a></li>
+                <li><a href="">
+                    <div class="nav_banner"><img src="../public/image/nav01.png"></div>
+                    <p>每日新品</p>
+                </a></li>
+                <li><a href="">
+                    <div class="nav_banner"><img src="../public/image/nav04.png"></div>
+                    <p>专属推荐</p>
+                </a></li>
+            </ul>
+        </div>
+    </div>
+    <!--有品众筹-->
+    <div class="content_one">
+        <div class="crowd_funding">
+            <div class="crowd_top">
+                <h2>有品众筹</h2>
+                <p>
+                    <span class="funding_left">永远向前 永远无虑</span>
+                    <span class="funding_right">更多&ensp;<i class="fa fa-angle-right" aria-hidden="true" style="font-size: 16px"></i></span>
+                </p>
+            </div>
+            <div class="crowd_main">
+                <div class="crowd_left">
+                    <div class="crowd_item">
+                        <a href="/goods/goods_detail?goodsID={{ypzcList[0].goodsID}}&page=1">
+                            <div class="shopping_text">
+                                <p class="shopping_info" title="{{ypzcList[0].goods_name}}">{{ypzcList[0].goods_name}}</p>
+                                <p class="shopping_desc" title="{{ypzcList[0].goods_detail}}">{{ypzcList[0].goods_detail}}</p>
+                                <p class="shopping_price">
+                                    <span class="pro_tag">￥</span>
+                                    <span>{{ypzcList[0].price_new}}</span>
+                                    <span class="pro_flag">起</span>
+                                </p>
+                            </div>
+                            <div class="shopping_img">
+                                <img src="../public/image/{{ypzcList[0].goods_img}}" width="100%" height="100%">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="crowd_inner">
+                        <div class="inner_bottom_one">
+                            <span class="inner_number">{{ypzcList[0].support}}</span>
+                            <span class="inner_text">人支持</span>
+                        </div>
+                        <div class="inner_bottom_two">
+                            <span>44%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="crowd_auto">
+                    <div class="auto_item">
+                        <a href="/goods/goods_detail?goodsID={{ypzcList[1].goodsID}}&page=1">
+                            <div class="auto_text">
+                                <p class="auto_info" title="{{ypzcList[1].goods_name}}">{{ypzcList[1].goods_name}}</p>
+                                <p class="auto_price"><span class="auto_tag">¥</span><span>{{ypzcList[1].price_new}}</span></p>
+                            </div>
+                            <div class="auto_img">
+                                <img src="../public/image/{{ypzcList[1].goods_img}}" width="100%" height="100%">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="auto_inner">
+                        <div class="auto_bottom_one">
+                            <span class="inner_number">{{ypzcList[1].support}}</span>
+                            <span class="inner_text">人支持</span>
+                            <div class="inner_bao">
+                                <span>爆</span>
+                            </div>
+                        </div>
+                        <div class="auto_bottom_two">
+                            <span>99.8%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="crowd_right">
+                    <div class="auto_item">
+                        <a href="/goods/goods_detail?goodsID={{ypzcList[2].goodsID}}&page=1">
+                            <div class="auto_text">
+                                <p class="auto_info" title="{{ypzcList[2].goods_name}}">{{ypzcList[2].goods_name}}</p>
+                                <p class="auto_price"><span class="auto_tag">¥</span><span>{{ypzcList[2].price_new}}</span></p>
+                            </div>
+                            <div class="auto_img">
+                                <img src="../public/image/{{ypzcList[2].goods_img}}" width="100%" height="100%">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="right_inner">
+                        <div class="right_bottom_one">
+                            <span class="inner_number">{{ypzcList[2].support}}</span>
+                            <span class="inner_text">人支持</span>
+                        </div>
+                        <div class="right_bottom_two">
+                            <span>40%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--有品秒杀-->
+    <div class="content_two">
+        <div class="contain">
+            <div class="crowd_top">
+                <h2>有品秒杀</h2>
+                <p>
+                    <span class="icon_left">&ensp;<i class="fa fa-clock-o" aria-hidden="true"></i> 16:00场,剩余:</span>
+                    <span class="time"></span>
+                    <span class="time_content"></span>
+                    <span class="funding_right">更多&ensp;<i class="fa fa-angle-right" aria-hidden="true" style="font-size: 16px"></i></span>
+                </p>
+            </div>
+            <div class="crowd_container">
+                <div class="cure_main switch_item">
+                    {{each ypmsList ypms}}
+                    <div class="seckill switch_info">
+                        <div class="seckill_img">
+                            <a href="/goods/goods_detail?goodsID={{ypms.goodsID}}&page=1" class="out">
+                                <img src="../public/image/{{ypms.goods_img}} " width="100%" height="100%">
+                            </a>
+                        </div>
+                        <div class="seckill_box">
+                            <p class="pro_info" title="{{ypms.goods_name}}">{{ypms.goods_name}}</p>
+                            <p class="pro_price">
+                                <span class="pro_unit">¥</span>
+                                <span class="m_num">{{ypms.price_new}}</span>
+                                <span class="market_price">¥{{ypms.price_old}}</span>
+                            </p>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+                <div class="btn_prev" id="seckill_prev"></div>
+                <div class="btn_next" id="seckill_next"></div>
+            </div>
+        </div>
+    </div>
+    <!--每日新品-->
+    <div class="content_three">
+        <div class="contain">
+            <div class="crowd_top">
+                <h2>每日新品</h2>
+                <p>
+                    <span class="funding_left">每天十点 惊喜不断</span>
+                    <span class="funding_right">更多&ensp;<i class="fa fa-angle-right" aria-hidden="true" style="font-size: 16px"></i></span>
+                </p>
+            </div>
+            <div class="crowd_container">
+                <div class="cure_main cure_item">
+                    {{each mrxpList mrxp}}
+                    <div class="seckill seckill_other">
+                        <a href="/goods/goods_detail?goodsID={{mrxp.goodsID}}&page=1">
+                            <div class="seckill_img"><img src="../public/image/{{mrxp.goods_img}}" width="100%" height="100%"></div>
+                            <div class="seckill_box">
+                                <p class="pro_info" title="{{mrxp.goods_name}}">{{mrxp.goods_name}}</p>
+                                <p class="pro_desc" title="{{mrxp.goods_detail}}">{{mrxp.goods_detail}}</p>
+                                <p class="shopping_price">
+                                    <span class="pro_tag">￥</span>
+                                    <span>{{mrxp.price_new}}</span>
+                                    <span class="pro_flag">起</span>
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                    {{/each}}
+                </div>
+                <div class="btn_prev" id="cure_prev"></div>
+                <div class="btn_next" id="cure_next"></div>
+            </div>
+        </div>
+    </div>
+    <!--专属推荐-->
+    <div class="content_four">
+        <div class="contain">
+            <div class="crowd_top">
+                <h2>专属推荐</h2>
+            </div>
+            <div class="recommend">
+                {{each zstjList zstj}}
+                <div class="recommend_goods">
+                    <a href="/goods/goods_detail?goodsID={{zstj.goodsID}}&page=1">
+                        <div class="recommend_img_content">
+                            <div class="recommend_img"><img src="../public/image/{{zstj.goods_img}}" width="100%" height="100%"></div>
+                            <p class="recommend_content">{{zstj.goods_detail}}</p>
+                        </div>
+                        <div class="recommend_text">
+                            <div class="special_offer">
+                                <img src="../public/image/special_offer.png">
+                                <img src="../public/image/free_mail.png">
+                            </div>
+                            <p class="pro_info pro_title" title="{{zstj.goods_name}}">{{zstj.goods_name}}</p>
+                            <p class="pro_price">
+                                <span class="pro_unit">¥</span>
+                                <span class="m_num">{{zstj.price_new}}</span>
+                                <span class="pro_flag pro_qi">起</span></p>
+                        </div>
+                    </a>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+    <!--footer-->
+    <footer>
+        <div class="contain">
+            <div class="logo"><a href="/goods/index"><img src="../public/image/logo.png"></a></div>
+            <div class="f_icon"><img src="../public/image/f_logo.png"></div>
+        </div>
+    </footer>
+    <!--固定元素-->
+    <div class="fixBar">
+        <ul class="fix_nav">
+            <li>
+                <a class="m_icons m_service"></a>
+                <p class="fix_text">联系客服</p>
+            </li>
+            <li>
+                <a class="m_icons m_download"></a>
+                <p class="fix_text">下载APP</p>
+            </li>
+            <li>
+                <a class="m_icons m_weChat"></a>
+                <p class="fix_text">关注微信</p>
+            </li>
+            <li>
+                <a class="m_icons m_gift"></a>
+                <p class="fix_text">新人有礼</p>
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+<script src="../public/JS/jquery-1.12.4.js"></script>
+<script>
+    //轮播
+    function carousel() {
+        var images = new Array();
+        '<%carousel.forEach((item)=>{%>'
+        images.push('<%=item.image%>');
+        '<%})%>'
+        var index = 0;
+        $("#list li").eq(0).css({"box-shadow":"0 0 0 4px #ccc"},{"background":"#a7936e"},{"border":"none"});
+        setInterval(function () {
+            index++;
+            if(index == images.length){
+                index = 0;
+            }
+            $("#image").attr("src",`../public/image\\${images[index]}`);//设置或返回被选元素的值
+            $("#list li").css({"box-shadow":"none"},{"background":"#f2fcff"},{"border":"1px solid #cecece"});
+            $("#list li").eq(index).css({"box-shadow":"0 0 0 4px #ccc"},{"background":"#a7936e"},{"border":"none"});
+        },1500);
+    }
+    carousel();
+    //秒杀倒计时
+    //$('.out').removeAttr('href');
+    //$('.out').toggleClass('btn disabled');
+    $('.out').attr("disabled",true).css({"pointer-events":"none"});
+    function countDown(){
+        var startTime = new Date("2022/7/06 12:00:00");
+        var times = setInterval(function timer(){
+            var nowTime = new Date();
+            var time = startTime - nowTime;
+            var day = parseInt(time/1000/60/60/24);
+            var hour = parseInt(time/1000/60/60%24);
+            var minute = parseInt(time/1000/60%60);
+            var seconds = parseInt(time/1000%60);
+            $('.time').html(day+"天"+hour+"小时"+minute+"分钟"+seconds+"秒");
+            if(time<0){
+                clearInterval(times);
+                $('.time').html("00天"+"00小时"+"00分钟"+"00秒");
+                $('.time_content').html('可以开始抢购了！');
+                $('.out').removeAttr("disabled").removeAttr("style");
+                //$('.out').attr('href');
+                //$('.out').removeClass('out btn disabled');
+            }
+        },1000);
+    }
+    countDown();
+    //商品图左右切换
+    function switchover1() {
+        var widthDiv = $('.switch_info').outerWidth(true);//outerWidth()返回第一个匹配元素的外部宽度，为true包含margin
+        var numDiv = $('.switch_info').length;
+        console.log(numDiv);
+        $('.switch_item').css("width",widthDiv*numDiv);
+        var flag = true;
+        $('#seckill_prev').click(function () {
+            if(flag){
+                flag=false;
+                $('.switch_item').find('.switch_info').eq(numDiv-1).prependTo($('.switch_item'));
+                $('.switch_item').css({'marginLeft':-widthDiv}).delay(0).queue(function () {
+                    $('.switch_item').animate({'marginLeft':0});
+                    flag = true;
+                    $(this).dequeue();
+                });
+            }
+        });
+        $('#seckill_next').click(function () {
+            if(flag){
+                flag=false;
+                $('.switch_item').animate({'marginLeft':-widthDiv}).delay(0).queue(function () {
+                    $('.switch_item').find('.switch_info').eq(0).appendTo($('.switch_item'));
+                    $('.switch_item').css({'marginLeft':0});
+                    flag = true;
+                    $(this).dequeue();
+                });
+            }
+        });
+    }
+    switchover1();
+    function switchover2() {
+        var widthDiv = $('.seckill_other').outerWidth(true);
+        var numDiv = $('.seckill_other').length;
+        $('.cure_item').css("width",widthDiv*numDiv);
+        var flag = true;
+        $('#cure_prev').click(function () {
+            if(flag){
+                flag=false;
+                $('.cure_item').find('.seckill_other').eq(numDiv-1).prependTo($('.cure_item'));
+                $('.cure_item').css({'marginLeft':-widthDiv}).delay(0).queue(function () {
+                    $('.cure_item').animate({'marginLeft':0});
+                    flag = true;
+                    $(this).dequeue();
+                });
+            }
+        });
+        $('#cure_next').click(function () {
+            if(flag){
+                flag=false;
+                $('.cure_item').animate({'marginLeft':-widthDiv}).delay(0).queue(function () {
+                    $('.cure_item').find('.seckill_other').eq(0).appendTo($('.cure_item'));
+                    $('.cure_item').css({'marginLeft':0});
+                    flag = true;
+                    $(this).dequeue();
+                });
+            }
+        });
+    }
+    switchover2()
+</script>
+</html>
