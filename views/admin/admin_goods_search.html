@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理</title>
+    <link rel="stylesheet" href="../../public/CSS/admin_index.css">
+    <link rel="stylesheet" href="../../public/CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="../../public/CSS/font-awesome.min.css">
+    <script src="../../public/JS/jquery.min.js"></script>
+    <script src="../../public/JS/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../../public/CSS/admin_goods_search.css">
+</head>
+<body>
+<div class="admin_main_goods">
+            <div class="link-nav">
+                <ul>
+                    <li><a herf="">商品管理 ></a></li>
+                    <li> 商品查询</li>
+                </ul>
+            </div>
+            <div class="form-wrap">
+                <div class="search-title">
+                    <i class="fa fa-search"></i>
+                    <span>搜 索</span>
+                </div>
+                <!-- 搜索条件的表单 -->
+                <form class="form-inline" action="/admin/doAdminGoodsSearch" method="post">
+                    <div class="input-group">
+                        <i class="fa fa-search"></i>
+                        <input class="form-control" type="text" placeholder="请搜索关键词" name="search">
+                    </div>
+                    <button type="submit" class="btn_search">搜索</button>
+                </form>
+            </div>
+            <div class="admin_goods_data" style="height: 700px">
+                <table class="table table-hover">
+                    <caption>结果如下:</caption>
+                    <thead>
+                    <tr style="background-color: #e0e7ec;">
+                        <th>商品ID</th>
+                        <th>商品名称</th>
+                        <th>商品图片</th>
+                        <th>折扣前</th>
+                        <th>折扣后</th>
+                        <th>库存量</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{each goodsList goods}}
+                    <tr>
+                        <td>{{goods.goodsID}}</td>
+                        <td style="width: 200px">{{goods.goods_name}}</td>
+                        <td><img src="../../public/image/{{goods.goods_img}}" width="60px" height="60px"></td>
+                        <td>{{goods.price_old}}￥</td>
+                        <td>{{goods.price_new}}￥</td>
+                        <td>{{goods.stock}}</td>
+                        <td>
+                            <a href="/admin/showUpdateGoods?goodsID={{goods.goodsID}}" class="btn btn-success">修改</a>&ensp;
+                            {{if goods.goods_status=='上架'}}
+                            <a href="/admin/outAwayGoods?goodsID={{goods.goodsID}}" class="btn btn-warning">下架</a>
+                            {{else}}
+                            <a href="/admin/putAwayGoods?goodsID={{goods.goodsID}}" class="btn btn-info">上架</a>
+                            {{/if}}
+                        </td>
+                    </tr>
+                    {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+</body>
+<script src="../../public/JS/jquery-1.12.4.js"></script>
+</html>

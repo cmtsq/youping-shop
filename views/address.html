@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../public/CSS/font-awesome.min.css">
+    <link rel="stylesheet" href="../public/CSS/address.css">
+    <link rel="stylesheet" href="../public/CSS/index.css">
+
+</head>
+<body>
+<div class="main_address">
+    <section>
+        <div class="address_title">
+            <p>地址管理</p>
+        </div>
+    </section>
+    <section>
+        <div class="address_list">
+            {{each addressList address}}
+            <div class="address_list_item">
+                <div class="address_item_content">
+                    <div class="address_message">
+                        <p class="address_name">{{address.name}}</p>
+                        <p class="address_tel">{{address.tel}}</p>
+                        <p class="address_place">{{address.address}}</p>
+                    </div>
+                    <div class="address_button">
+                        <a href="/personal/updateAddress?addressID={{address.addressID}}">修改</a>
+                        <a href="/personal/delAddress?addressID={{address.addressID}}">删除</a>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+            <div class="address_list_item">
+                <a href="/personal/addAddress">
+                    <div class="address_add">
+                        <div class="add_icon">
+                            <div>+</div>
+                        </div>
+                        <div class="add_text">添加新地址</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+</div>
+</body>
+<script src="../public/JS/jquery-1.12.4.js"></script>
+<script>
+    function show() {
+        $(".address_list_item").mouseover(function () {
+            $(this).children().children(".address_button").show();
+        });
+        $(".address_list_item").mouseleave(function () {
+            $(this).children().children(".address_button").hide();
+        });
+    }
+    show();
+</script>
+</html>

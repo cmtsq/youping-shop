@@ -1,0 +1,34 @@
+.add_goods{
+    padding: 20px;
+    width: 100%;
+    height: 1000px;
+    background: beige;
+}
+input[type=file]{
+    height: 40px;
+    line-height: 27px;
+}
+input[type="file"]:focus{
+    outline: none;
+}
+.original_price{
+    display: inline-block;
+}
+.discount_price,.stock_num,.recommend{
+    display: inline-block;
+    margin-left: 30px;
+}
+.stock_num{
+    margin-right: 200px;
+}
+.goods_type{
+    display: inline-block;
+}
+.add_btn{
+    display: block;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+.add_btn:focus{
+    outline: 0;
+}

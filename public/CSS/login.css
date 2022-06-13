@@ -1,0 +1,223 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+    font-family: "MI Lan Pro",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    line-height: 1.5;
+    background-color: #fff;
+}
+.contain{
+    width: 1536px;
+    margin: 0 auto;
+}
+.left_img{
+    width: 375px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    box-sizing: border-box;
+}
+.left_img img{
+    width: 100%;
+    height: 100%;
+}
+.main{
+    margin-left: 375px;
+    position: relative;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+.header{
+    margin: 20px 15px;
+    overflow: hidden;
+}
+.logo{
+    float: left;
+}
+.right-top{
+    float: right;
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+}
+.right-top li{
+    margin: 0 10px;
+}
+.right-top li a{
+    text-decoration: none;
+    font-size: 15px;
+    line-height: 50px;
+    color: #9f9f9f;
+}
+.right-top li a:hover{
+    color: #ff5c00;
+}
+.layout{
+    padding-top: 40px;
+    text-align: center;
+    height: 627px;
+}
+.layout .login{
+    text-align: left;
+    display: inline-block;
+    box-sizing: border-box;
+    overflow: hidden;
+    border-radius: 4px;
+    padding: 40px 45px;
+    position: relative;
+    margin: -30px auto 80px;
+    min-width: 450px;
+    box-shadow: 0 20px 50px 0 hsl(0deg 0% 64% / 20%);/*可以使用色相、饱和度和明度 （HSL）来指定颜色*/
+}
+.mi-layout{
+    display: flex;
+    justify-content: flex-start;/*对齐弹性容器，flex-start为默认值*/
+}
+.mi-layout p{
+    padding: 0 0 4px;
+    margin: 0 20px 0 0;
+    height: 41px;
+    line-height: 41px;
+}
+.mi-layout p a{
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: 400;
+    color: grey;
+}
+.input-border-login{
+    margin-bottom: 20px;
+    display: block;
+}
+.log_box{
+    display: block;
+}
+.reg_box{
+    display: none;
+}
+.mi-layout-login{
+    border-bottom: 4px solid rgb(244, 172, 83);
+}
+.accept{
+    font-size: 14px;
+    font-weight: 400;
+    color: #aaa;
+    line-height: 20px;
+    padding-bottom: 20px;
+}
+.accept span{
+    font-size: 14px;
+    vertical-align: top;
+}
+.accept span input{
+    height: 22px;
+}
+.input-border-login form > input,.input-border-reg form > input{
+    display: block;
+    width: 100%;
+    line-height: 60px;
+    font-size: 18px;
+    color: grey;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    background: rgba(250, 235, 215, 0.79);
+}
+.input-border-login input[type="submit"]{
+    background: #ffa578;
+    color: #fff0dc ;
+}
+.input-border-reg input[type="submit"]{
+    background: #ffa578 !important;
+    color: #fff0dc !important;
+}
+input::placeholder{
+    color: #f04645;
+    padding-left: 10px;
+}
+input:focus{
+    outline: 2px solid #ff7744;
+    text-indent: 10px;
+}
+.hint{
+    height: 30px;
+    overflow: hidden;
+    font-size: 13px;
+    color: #cd1b1e;
+    line-height: 30px;
+}
+.forget{
+    margin-bottom: 10px;
+}
+.forget a{
+    font-size: 14px;
+    color: #cd1b1e;
+    text-decoration: none;
+}
+.other-login{
+    margin: 0 auto;
+}
+.other-login .title{
+    font-size: 14px;
+    color: #aaa;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.icon{
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+}
+.footer{
+    padding: 0 20px;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    position: absolute;
+    left: 1px;
+    right: 0;
+    bottom: 10px;
+    color: #999;
+    font-size: 12px;
+}
+/*上传头像*/
+.reg_head{
+    margin: 0 auto;
+    width: 152px;
+    height: 152px;
+}
+.con4 {
+    width: 152px;
+    height: 152px;
+    position: relative;
+    overflow: hidden;
+    color: #FFFFFF;
+}
+.con4 .upload {
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    left: 0;
+    top: 1px;
+    opacity: 0;
+}
+.upload_pic {
+    display: block;
+    width: 150px;
+    height: 150px;
+    opacity: 0;
+}
+#cvs {
+    border: 1px solid grey;
+    border-left: 0;
+    width: 150px;
+    height: 150px;
+    background-image: url("../image/head.png");
+    background-size: 100%;
+}

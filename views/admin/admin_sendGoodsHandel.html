@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理</title>
+    <link rel="stylesheet" href="../../public/CSS/admin_index.css">
+    <link rel="stylesheet" href="../../public/CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="../../public/CSS/font-awesome.min.css">
+    <script src="../../public/JS/jquery.min.js"></script>
+    <script src="../../public/JS/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../../public/CSS/admin_order.css">
+</head>
+<body>
+<div class="admin_main_evaluate">
+    <div class="link-nav">
+        <ul>
+            <li><a herf="">订单管理 ></a></li>
+            <li> 发货处理</li>
+        </ul>
+    </div>
+    <div class="admin_order">
+        <hr style="margin: 7px 0">
+        <section id="already_pay">
+            {{each paidList paid}}
+            <div class="order_main_item">
+                <section class="first_section">
+                <span class="order_detail_serial">
+                    <p>订单编号：<span class="serial">{{paid.orderID}}</span></p>
+                </span>
+                <span class="order_detail_number">
+                    <p>X<span class="order_detail_num">{{paid.goods_num}}</span></p>
+                </span>
+                <span class="order_detail_address">
+                    <p>订单地址：<span class="detail_address">{{paid.order_address}}</span></p>
+                </span>
+                </section>
+                <section class="order_goods_box">
+                    <div class="order_main_product">
+                        <div class="order_detail">
+                            <div class="order_detail_img">
+                                <img src="../public/image/{{paid.goods_img}}" height="100%" width="100%">
+                            </div>
+                            <span class="order_detail_text">
+                                <div class="order_detail_content">
+                                    <p class="order_detail_title" title="{{paid.goods_name}}">{{paid.goods_name}}</p>
+                                    <p class="order_detail_price">￥ {{paid.price_new}}</p>
+                                </div>
+                            </span>
+                            <span class="order_detail_time">
+                                <p>{{paid.order_time.toLocaleString()}}</p>
+                            </span>
+                            <div class="order_del_button">
+                                <a href="/admin/doSendGoodsHandel?orderDetailID={{paid.orderDetailID}}">发 货</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            {{/each}}
+        </section>
+    </div>
+</div>
+</body>
+<script src="../../public/JS/jquery-1.12.4.js"></script>
+</html>

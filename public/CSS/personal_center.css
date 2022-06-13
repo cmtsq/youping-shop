@@ -1,0 +1,93 @@
+/*订单部分*/
+.inner_nav{
+    padding: 30px 0;
+    width: 100%;
+    display: block;
+    float: left;
+    background: transparent repeat 0 0 none;
+    font-size: 13px;
+}
+.inner_nav span{
+    font-size: 13px;
+}
+.inner_nav span a:hover{
+    text-decoration: none;
+}
+.goods_order{
+    width: 100%;
+    background: #fafafa repeat 0 0 none;
+    padding: 10px 0 100px 0;
+    color: #4a4a4a;
+}
+.order_nav{
+    width: 173px;
+    margin-right: 7px;
+    min-height: 700px;
+    background: #fff repeat 0 0 none;
+    float: left;
+}
+.personal{
+    text-align: center;
+    padding: 36px 10px;
+    border-bottom: 1px solid #f3f3f3;
+}
+.user_head{
+    margin: 0 auto 8px;
+    width: 54px;
+    height: 54px;
+    border: 1px solid #fafafa;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.user_name{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
+}
+.order_list{
+    padding: 2px 0 10px;
+}
+.order_list ul{
+    position: relative;
+    padding: 16px 0;
+}
+.order_list ul li{
+    width: 100%;
+    padding: 16px 20px;
+    position: relative;
+}
+.order_list ul li.active{
+    color: #ae8046;
+}
+.dot{
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background-color: #845f3f;
+    border-radius: 50%;
+    top: 50%;
+    margin-top: -3px;
+    margin-left: 20px;
+}
+.order_list ul li a{
+    color: inherit;
+    width: 100%;
+    height: 100%;
+    margin-left: 34.5px;
+    text-decoration: none;
+}
+.order_list ul li a:hover{
+    text-decoration: none;
+}
+.order_content{
+    width: 900px;
+    min-height: 700px;
+    background: #fff repeat 0 0 none;
+    float: left;
+}
+iframe{
+    width: 900px;
+    height: 700px;
+    border: none;
+}

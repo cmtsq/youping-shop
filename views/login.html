@@ -1,0 +1,203 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../public/CSS/login.css">
+    <link rel="stylesheet" href="../public/CSS/font-awesome.min.css">
+</head>
+<body>
+<div class="contain">
+    <div class="left_img">
+        <img src="../public/image/login-left.jpg">
+    </div>
+    <div class="main">
+        <div class="header">
+            <div class="logo"><a href="/goods/index"><img src="../public/image/logo.png"></a></div>
+            <ul class="right-top">
+                <li><a href="#">用户协议</a></li>
+                <li><a href="#">隐私政策</a></li>
+                <li><a href="#">帮助中心</a></li>
+            </ul>
+        </div>
+        <div class="layout">
+            <div class="login">
+                <div class="mi-layout">
+                    <p class="mi-layout-login"><a href="#">登录</a></p>
+                    <p class="mi-layout-reg"><a href="#">注册</a></p>
+                </div>
+                    <div class="log_box">
+                        <div class="input-border-login">
+                        <form action="/user/doLog" method="post">
+                            <input type="text" name="log_user" placeholder="邮箱/手机号码/有品ID" id="userLog">
+                            <div class="hint">请输入用户名</div>
+                            <input type="password" name="log_pass" placeholder="密码" id="passLog">
+                            <div class="hint">请输入密码</div>
+                            <input type="submit" value="登  录" onclick="checkLog()">
+                            <div class="forget"><a href="#">忘记密码?</a></div>
+                        </form>
+                    </div>
+                        <div class="other-login">
+                        <div class="title">其他方式登录</div>
+                        <ul class="icon">
+                        <li><img src="../public/image/zhifubao.png"></li>
+                        <li><img src="../public/image/weixin.png"></li>
+                        <li><img src="../public/image/qq.png"></li>
+                        <li><img src="../public/image/weibo.png"></li>
+                    </ul>
+                    </div>
+                </div>
+                <div class="reg_box">
+                    <div class="input-border-reg">
+                        <form action="/user/doReg" method="post">
+                            <input type="text" name="reg_user" placeholder="邮箱/手机号码/有品ID" id="userReg">
+                            <div class="hint" id="reg_user">请创建账号</div>
+                            <input type="password" name="reg_pass" placeholder="密码" id="passReg">
+                            <div class="hint" id="reg_pass">请设置密码</div>
+                            <div class="reg_head">
+                                <div class="con4">
+                                    <span class="upload"><input type="file" name="head_img" class="upload_pic" id="upload" /></span>
+                                    <canvas id="cvs" width="200" height="200"></canvas>
+                                </div>
+                            </div>
+                            <div class="hint">请上传头像</div>
+                            <input type="submit" value="注  册" onclick="checkReg()">
+                            <div class="accept">
+                                <span><input type="checkbox"></span>
+                                <span>已阅读并同意小米账号用户协议和隐私政策</span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <P class="footer">小米公司版权所有-京ICP备10046444-京公网安备11010802020134号-京ICP证110507号</P>
+    </div>
+</div>
+</body>
+<script src="../public/JS/jquery-1.12.4.js"></script>
+<script>
+    //登录与注册切换
+    function cut(){
+        $(".mi-layout p").click(function () {
+            var index = $(this).index();
+            if(index == 1)
+            {
+                $(".reg_box").show();
+                $(".log_box").hide();
+                $(".mi-layout-reg").css("border-bottom","4px solid #f4ac53");
+                $(".mi-layout-login").css("border-bottom","none");
+            }else{
+                $(".reg_box").hide();
+                $(".log_box").show();
+                $(".mi-layout-login").css("border-bottom","4px solid #f4ac53");
+                $(".mi-layout-reg").css("border-bottom","none");
+            }
+        });
+    }
+    cut();
+    //登录控件
+    function checkLog(){
+        var user = $("#userLog").val();
+        var pwd = $("#passLog").val();
+        if(user=="") {
+            alert('账号不能为空');
+            return false;//停止执行下面的语句
+        }
+        else if(pwd==""){
+            alert('密码不能为空');
+            return false;
+        }else{
+            window.location.href='index.html';
+        }
+    }
+    //注册控件
+    function checkReg(){
+        var user = $("#userReg").val();
+        var pwd = $("#passReg").val();
+        if(user=="") {
+            alert('账号不能为空');
+            return false;//停止执行下面的语句
+        }
+        else if(pwd==""){
+            alert('密码不能为空');
+            return false;
+        }else {
+
+        }
+    }
+    //上传头像
+    //获取上传按钮
+    var input1 = document.getElementById("upload");
+    if(typeof FileReader === 'undefined') {
+        //result.innerHTML = "抱歉，你的浏览器不支持 FileReader";
+        //setAttribute()添加指定的属性，并为其赋指定的值
+        input1.setAttribute('disabled', 'disabled');
+    } else {
+        //addEventListener()用于向指定元素添加事件句柄
+        input1.addEventListener('change', readFile, false);
+    }
+    function readFile() {
+        var file = this.files[0]; //获取上传文件列表中第一个文件
+        if(!/image\/\w+/.test(file.type)) {
+            //图片文件的type值为image/png或image/jpg
+            alert("文件必须为图片！");
+            return false;
+        }
+        // console.log(file);
+        var reader = new FileReader(); //创建实例一个文件对象
+        reader.readAsDataURL(file); //读取指定的文件，把上传的文件转换成url
+        //当文件读取成功便可以调取上传的接口
+        reader.onload = function(e) {
+            var image = new Image();
+            // 设置src属性
+            image.src = e.target.result;
+            var max = 200;
+            // 绑定load事件处理器，加载完成后执行，避免同步问题
+            image.onload = function() {
+                // 获取 canvas DOM 对象
+                var canvas = document.getElementById("cvs");
+                // 获取 canvas的 2d 环境对象,
+                var ctx = canvas.getContext("2d");
+                // canvas清屏 清空ctx矩形内的指定像素
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                //在画布上绘制图像、画布
+                ctx.drawImage(image, 0, 0, 200, 200);
+            };
+        }
+    };
+    //blur失去焦点，通过ajax发送请求给服务器
+    /**
+     * '/user/check':请求路径
+     * {uname:$('#uname').val()}:发送给服务器的数据
+     * function(data,status):服务器响应后的回调函数
+     */
+    $('#userReg').blur(function () {
+        var user = $("#userLog").val();
+        var user2 = /[^%&',;=?$\x22]+/;//验证是否含有^%&',;=?$\"等字符
+        if(user2.test(user)==false){
+            $('#reg_user').html(`注册的账号不能含有^%&\',;=?$\\"等字符`);
+        }else{
+            $('#reg_user').html('');
+        }
+    });
+    $('#passReg').blur(function () {
+        //test()方法用于检测一个字符串是否匹配某个模式
+        var pwd = $("#passLog").val();
+        var pwd2 = /^\d{2,10}$/;//只能输入3-10为数字
+        if(pwd2.test(pwd)==false){
+            $('#reg_pass').html('密码只能输入3-10个数字');
+        }else{
+            $('#reg_pass').html('');
+        }
+    });
+    $("#userReg").blur(function () {
+        $.post('/user/checkReg',{userReg:$('#userReg').val()},(data,status)=>{
+            if(data.userCount>0){
+                $('#reg_user').html("用户名已存在")
+            }else{
+                $("#reg_user").html("请创建账号");
+            }
+        });
+    });
+</script>
+</html>

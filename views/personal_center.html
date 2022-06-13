@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../public/CSS/index.css">
+    <link rel="stylesheet" href="../public/CSS/personal_center.css">
+    <link rel="stylesheet" href="../public/CSS/font-awesome.min.css">
+    <script src="../public/JS/jquery.min.js"></script>
+    <script src="../public/JS/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../public/CSS/bootstrap.min.css">
+</head>
+<body>
+<!--头部-->
+<header>
+    <div class="head_auto">
+        <ul class="roof">
+            {{if user_name}}
+            <li>
+                <div class="headshot"><img src="../public/image/{{userList.user_head}}" width="100%" height="100%"></div>
+                <div class="nickname dropdown">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                        {{userList.user_name}}  <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                    </a>
+                    <ul class="dropdown-menu drop_min">
+                        <li><a href="/personal/people"><i class="fa fa-user" aria-hidden="true"></i> 个人中心</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#"><i class="fa fa-question-circle" aria-hidden="true"></i> 其他帮助</a></li>
+                        <li class="divider"></li>
+                        <li><a href="/user/logout"><i class="fa fa-sign-out" aria-hidden="true"></i> 退出登录</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#"><i class="fa fa-cog" aria-hidden="true"></i> 设置</a></li>
+                    </ul>
+                </div>
+            </li>
+            {{else}}
+            <li><a href="/user/login">登录</a></li>
+            {{/if}}
+            <span>|</span>
+            <li><a href="">帮助中心</a></li><span>|</span>
+            <li><a href=""><i class="fa fa-mobile" aria-hidden="true" style="font-size: 20px;vertical-align: middle;"></i> 下载APP</a></li><span>|</span>
+            <li class="drop_down">
+                <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                    资质证照/协议规则  <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                </a>
+                <ul class="dropdown-menu drop_max">
+                    <li><a href="#">资质证照</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">协议规则</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</header>
+<!--搜索-->
+<div class="search">
+    <div class="search-top">
+        <div class="logo"><a href="/goods/index"><img src="../public/image/logo.png"></a></div>
+        <div class="shoppingCart-icon">
+            <a href="/cart/showCart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+        </div>
+        <form action="/goods/doSearchGoods" method="post">
+            <div class="searcher">
+                <button><i class="fa fa-search" aria-hidden="true"></i></button>
+                <input type="search" placeholder="请输入搜索词" name="search">
+            </div>
+        </form>
+    </div>
+</div>
+<!--订单部分-->
+<div class="goods_order">
+    <div class="contain">
+        <div class="inner_nav">
+            <span><a href="/goods/index">首页</a></span> >
+            <span><a href="/personal/people" style="color: #CCCCCC">个人中心</a></span>
+        </div>
+        <div class="order_nav">
+            <section>
+                <div class="personal">
+                    <div class="user_head"><img src="../public/image/{{userList.user_head}}" height="100%" width="100%"></div>
+                    <p class="user_name">{{userList.user_name}}</p>
+                </div>
+            </section>
+            <section>
+                <div class="order_list">
+                    <ul>
+                        <li class="active">
+                            <span class="dot" style="display: block"></span>
+                            <a href="/personal/order" target="mainFrame">我的订单</a>
+                        </li>
+                        <li>
+                            <span class="dot" style="display: none"></span>
+                            <a href="/personal/collect" target="mainFrame">我的收藏</a>
+                        </li>
+                        <li>
+                            <span class="dot" style="display: none"></span>
+                            <a href="/personal/address" target="mainFrame">我的地址</a>
+                        </li>
+                        <li>
+                            <span class="dot" style="display: none"></span>
+                            <a href="/personal/remark" target="mainFrame">我的评论</a>
+                        </li>
+                        <li>
+                            <span class="dot" style="display: none"></span>
+                            <a href="/personal/oneself" target="mainFrame">我的信息</a>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+        <div class="order_content" >
+            <iframe name="mainFrame" src="/personal/order"></iframe>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../public/JS/jquery-1.12.4.js"></script>
+<script>
+    function cut() {
+        $(".order_list ul li").click(function () {
+            var index = $(this).index();
+            if(index == 1)
+            {
+                $(".order_list ul li:eq(0) .dot").hide();
+                $(".order_list ul li:eq(1) .dot").show();
+                $(".order_list ul li:eq(2) .dot").hide();
+                $(".order_list ul li:eq(3) .dot").hide();
+                $(".order_list ul li:eq(4) .dot").hide();
+                $(".order_list ul li:eq(1)").siblings().removeClass("active");
+                $(".order_list ul li:eq(1)").addClass("active");
+            }else if(index == 2){
+                $(".order_list ul li:eq(0) .dot").hide();
+                $(".order_list ul li:eq(1) .dot").hide();
+                $(".order_list ul li:eq(2) .dot").show();
+                $(".order_list ul li:eq(3) .dot").hide();
+                $(".order_list ul li:eq(4) .dot").hide();
+                $(".order_list ul li:eq(2)").siblings().removeClass("active");
+                $(".order_list ul li:eq(2)").addClass("active");
+            }else if(index == 3){
+                $(".order_list ul li:eq(0) .dot").hide();
+                $(".order_list ul li:eq(1) .dot").hide();
+                $(".order_list ul li:eq(2) .dot").hide();
+                $(".order_list ul li:eq(3) .dot").show();
+                $(".order_list ul li:eq(4) .dot").hide();
+                $(".order_list ul li:eq(3)").siblings().removeClass("active");
+                $(".order_list ul li:eq(3)").addClass("active");
+            }else if(index == 4){
+                $(".order_list ul li:eq(0) .dot").hide();
+                $(".order_list ul li:eq(1) .dot").hide();
+                $(".order_list ul li:eq(2) .dot").hide();
+                $(".order_list ul li:eq(3) .dot").hide();
+                $(".order_list ul li:eq(4) .dot").show();
+                $(".order_list ul li:eq(4)").siblings().removeClass("active");
+                $(".order_list ul li:eq(4)").addClass("active");
+            }else{
+                $(".order_list ul li:eq(0) .dot").show();
+                $(".order_list ul li:eq(1) .dot").hide();
+                $(".order_list ul li:eq(2) .dot").hide();
+                $(".order_list ul li:eq(3) .dot").hide();
+                $(".order_list ul li:eq(4) .dot").hide();
+                $(".order_list ul li:eq(0)").siblings().removeClass("active");
+                $(".order_list ul li:eq(0)").addClass("active");
+            }
+        });
+    }
+    cut()
+</script>
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理</title>
+    <link rel="stylesheet" href="../../public/CSS/admin_index.css">
+    <link rel="stylesheet" href="../../public/CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="../../public/CSS/font-awesome.min.css">
+    <script src="../../public/JS/jquery.min.js"></script>
+    <script src="../../public/JS/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../../public/CSS/admin_order.css">
+</head>
+<body>
+<div class="admin_main_evaluate">
+    <div class="link-nav">
+        <ul>
+            <li><a herf="">订单管理 ></a></li>
+            <li> 交易订单</li>
+        </ul>
+    </div>
+    <div class="admin_order">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#">全部订单</a></li>
+            <li><a href="#">待发货</a></li>
+            <li><a href="#">待收货</a></li>
+            <li><a href="#">已完成</a></li>
+        </ul>
+        <div class="show_order_page">
+            <div class="show_order">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th style="text-align: right">商&ensp;品</th>
+                        <th style="text-align: left">信&ensp;息</th>
+                        <th>单价(元)</th>
+                        <th>数量</th>
+                        <th>买家</th>
+                        <th>订单金额</th>
+                        <th>状态</th>
+                    </tr>
+                    </thead>
+                    {{each allOrderList allOrder}}
+                    <tbody class="admin_order_title">
+                    <tr>
+                        <td class="admin_orderID"><input type="checkbox"> 订单编号: {{allOrder.orderID}}</td>
+                        <td class="admin_order_time">下单时间: {{allOrder.order_time.toLocaleString()}}</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    </tbody>
+                    <tbody>
+                    <tr>
+                        <td><img src="../../public/image/{{allOrder.goods_img}}" width="60px" height="60px"></td>
+                        <td><p class="order_goods_name">{{allOrder.goods_name}}</p></td>
+                        <td>{{(allOrder.price_new).toFixed(2)}}</td>
+                        <td>{{allOrder.goods_num}}</td>
+                        <td>{{allOrder.user_name}}</td>
+                        <td>{{(allOrder.price_new*allOrder.goods_num).toFixed(2)}}</td>
+                        <td>{{allOrder.order_status}}</td>
+                    </tr>
+                    </tbody>
+                    {{/each}}
+                </table>
+                <ul class="pager">
+                    <li class="previous"><a href="/admin/admin_order?page=<%=page-1%>" id="pPage">&larr; 上一页</a></li>
+                    <span>一共{{pageCount}}页，当前第{{page}}页</span>
+                    <li class="next"><a href="/admin/admin_order?page=<%=page+1%>" id="nPage">下一页 &rarr;</a></li>
+                </ul>
+            </div>
+            <div class="send_goods" style="display: none">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th style="text-align: right">商&ensp;品</th>
+                        <th style="text-align: left">信&ensp;息</th>
+                        <th>单价(元)</th>
+                        <th>数量</th>
+                        <th>买家</th>
+                        <th>订单金额</th>
+                        <th>状态</th>
+                    </tr>
+                    </thead>
+                    {{each sendGoodsList sendGoods}}
+                    <tbody class="admin_order_title">
+                    <tr>
+                        <td class="admin_orderID"><input type="checkbox"> 订单编号: {{sendGoods.orderID}}</td>
+                        <td class="admin_order_time">下单时间: {{sendGoods.order_time.toLocaleString()}}</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    </tbody>
+                    <tbody>
+                    <tr>
+                        <td><img src="../../public/image/{{sendGoods.goods_img}}" width="60px" height="60px"></td>
+                        <td><p class="order_goods_name">{{sendGoods.goods_name}}</p></td>
+                        <td>{{(sendGoods.price_new).toFixed(2)}}</td>
+                        <td>{{sendGoods.goods_num}}</td>
+                        <td>{{sendGoods.user_name}}</td>
+                        <td>{{(sendGoods.price_new*sendGoods.goods_num).toFixed(2)}}</td>
+                        <td>{{sendGoods.order_status}}</td>
+                    </tr>
+                    </tbody>
+                    {{/each}}
+                </table>
+            </div>
+            <div class="receive_goods" style="display: none">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th style="text-align: right">商&ensp;品</th>
+                        <th style="text-align: left">信&ensp;息</th>
+                        <th>单价(元)</th>
+                        <th>数量</th>
+                        <th>买家</th>
+                        <th>订单金额</th>
+                        <th>状态</th>
+                    </tr>
+                    </thead>
+                    {{each receiveGoodsList receiveGoods}}
+                    <tbody class="admin_order_title">
+                    <tr>
+                        <td class="admin_orderID"><input type="checkbox"> 订单编号: {{receiveGoods.orderID}}</td>
+                        <td class="admin_order_time">下单时间: {{receiveGoods.order_time.toLocaleString()}}</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    </tbody>
+                    <tbody>
+                    <tr>
+                        <td><img src="../../public/image/{{receiveGoods.goods_img}}" width="60px" height="60px"></td>
+                        <td><p class="order_goods_name">{{receiveGoods.goods_name}}</p></td>
+                        <td>{{(receiveGoods.price_new).toFixed(2)}}</td>
+                        <td>{{receiveGoods.goods_num}}</td>
+                        <td>{{receiveGoods.user_name}}</td>
+                        <td>{{(receiveGoods.price_new*receiveGoods.goods_num).toFixed(2)}}</td>
+                        <td>{{receiveGoods.order_status}}</td>
+                    </tr>
+                    </tbody>
+                    {{/each}}
+                </table>
+            </div>
+            <div class="off_stocks" style="display: none">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th style="text-align: right">商&ensp;品</th>
+                        <th style="text-align: left">信&ensp;息</th>
+                        <th>单价(元)</th>
+                        <th>数量</th>
+                        <th>买家</th>
+                        <th>订单金额</th>
+                        <th>状态</th>
+                    </tr>
+                    </thead>
+                    {{each offStocksList offStocks}}
+                    <tbody class="admin_order_title">
+                    <tr>
+                        <td class="admin_orderID"><input type="checkbox"> 订单编号: {{offStocks.orderID}}</td>
+                        <td class="admin_order_time">下单时间: {{offStocks.order_time.toLocaleString()}}</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    </tbody>
+                    <tbody>
+                    <tr>
+                        <td><img src="../../public/image/{{offStocks.goods_img}}" width="60px" height="60px"></td>
+                        <td><p class="order_goods_name">{{offStocks.goods_name}}</p></td>
+                        <td>{{(offStocks.price_new).toFixed(2)}}</td>
+                        <td>{{offStocks.goods_num}}</td>
+                        <td>{{offStocks.user_name}}</td>
+                        <td>{{(offStocks.price_new*offStocks.goods_num).toFixed(2)}}</td>
+                        <td>{{offStocks.order_status}}</td>
+                    </tr>
+                    </tbody>
+                    {{/each}}
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../../public/JS/jquery-1.12.4.js"></script>
+<script>
+    //分页
+    var page = '<%=page%>';
+    var pageCount = '<%=pageCount%>';
+    if(page == 1){
+        document.getElementById('pPage').onclick = function () {
+            return false;
+        };
+    }
+    if(page == pageCount){
+        document.getElementById('nPage').onclick = function () {
+            return false;
+        };
+    }
+    $('.nav-tabs li').click(function () {
+        var index = $(this).index();
+        if(index == 0){
+            $('.show_order_page div').eq(0).show();
+            $('.show_order_page div').eq(0).siblings().hide();
+            $(this).addClass('active');
+            $(this).siblings().removeClass('active');
+        }else if(index == 1){
+            $('.show_order_page div').eq(1).show();
+            $('.show_order_page div').eq(1).siblings().hide();
+            $(this).addClass('active');
+            $(this).siblings().removeClass('active');
+        }else if(index == 2){
+            $('.show_order_page div').eq(2).show();
+            $('.show_order_page div').eq(2).siblings().hide();
+            $(this).addClass('active');
+            $(this).siblings().removeClass('active');
+        }else{
+            $('.show_order_page div').eq(3).show();
+            $('.show_order_page div').eq(3).siblings().hide();
+            $(this).addClass('active');
+            $(this).siblings().removeClass('active');
+        }
+    });
+</script>
+</html>

@@ -1,0 +1,27 @@
+.admin_main_user{
+    padding: 20px;
+    text-align: initial;
+}
+.user_list{
+    color: darkgrey;
+}
+.user_list:hover{
+    color: rgba(169, 169, 169, 0.71);
+}
+.admin_main_user table tr{
+    cursor: pointer;
+}
+.run_edit{
+    width: 200px !important;
+}
+.run_edit a{
+    width: 50px !important;
+    height: 30px !important;
+    padding: 5px 9px !important;
+}
+td{
+    text-align: -webkit-center;
+}
+th{
+    text-align: center;
+}

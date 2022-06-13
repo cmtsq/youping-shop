@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../public/CSS/oneself.css">
+    <link rel="stylesheet" href="../public/CSS/index.css">
+    <link rel="stylesheet" href="../public/CSS/font-awesome.min.css">
+    <link rel="stylesheet" href="../public/CSS/bootstrap.min.css">
+</head>
+<body>
+<div class="main_oneself">
+    <section>
+        <div class="oneself_title">
+            <p>个人资料</p>
+        </div>
+    </section>
+    <section>
+        <div class="oneself_content">
+            <div class="oneself">
+                <div class="head_detail">
+                    头像信息:
+                    <div class="head_img">
+                        <img src="../public/image/{{userList.user_head}}" height="200px" width="200px">
+                    </div>
+                </div>
+                <div style="float: left;margin-left: 60px">
+                    <div class="user_detail">
+                        账 户：<span>{{userList.user_name}}</span>
+                    </div>
+                    <div class="pass_detail">
+                        密 码：<span>{{userList.user_pass}}</span>
+                    </div>
+                    <div class="user_status">
+                        账户状态：<span>{{userList.user_status}}</span>
+                    </div>
+                    <div class="update_detail_btn">
+                        <a href="/personal/updateOneself?userID={{userList.userID}}" class="btn btn-warning">修 改 资 料</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+</body>
+</html>

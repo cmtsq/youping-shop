@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../public/CSS/font-awesome.min.css">
+    <link rel="stylesheet" href="../public/CSS/order.css">
+    <link rel="stylesheet" href="../public/CSS/index.css">
+</head>
+<body>
+<div class="main_box">
+    <section>
+        <div class="order_main_nav">
+            <ul>
+                <li class="active">待发货(<span>{{paidCount.count}}</span>)</li>
+                <li>待收货(<span>{{receivingCount.count}}</span>)</li>
+                <li>待评价(<span>{{commentCount.count}}</span>)</li>
+                <li>已完成交易的订单(<span>{{allOrderCount.count}}</span>)</li>
+            </ul>
+        </div>
+    </section>
+    <section id="already_pay">
+        {{if paidList[0]}}
+        {{each paidList paid}}
+        <div class="order_main_item">
+            <section class="first_section">
+                <span class="order_detail_serial">
+                    <p>订单编号：<span class="serial">{{paid.orderID}}</span></p>
+                </span>
+                <span class="order_detail_address">
+                    <p>订单地址：<span class="detail_address">{{paid.order_address}}</span></p>
+                </span>
+            </section>
+            <section class="order_goods_box">
+                <div class="order_main_product">
+                    <div class="order_detail">
+                        <div class="order_detail_img">
+                            <img src="../public/image/{{paid.goods_img}}" height="100%" width="100%">
+                        </div>
+                        <span class="order_detail_text">
+                            <div class="order_detail_content">
+                                <p class="order_detail_title" title="{{paid.goods_name}}">{{paid.goods_name}}</p>
+                                <p class="order_detail_price">￥ {{paid.price_new}}</p>
+                            </div>
+                        </span>
+                        <span class="order_detail_time">
+                            <p>{{paid.order_time.toLocaleString()}}</p>
+                        </span>
+                        <span class="order_detail_number">
+                            <p>X<span class="order_detail_num">{{paid.goods_num}}</span></p>
+                        </span>
+                    </div>
+                </div>
+            </section>
+        </div>
+        {{/each}}
+        {{else}}
+        <div class="no_text">
+            <div class="no_txt">
+                <div class="no_img"></div>
+                <p>自己买没买东西，心里没点数吗</p>
+            </div>
+        </div>
+        {{/if}}
+    </section>
+    <section id="wait_receiving">
+        {{if receivingList[0]}}
+        {{each receivingList receiving}}
+        <div class="order_main_item">
+            <section class="first_section">
+                            <span class="order_detail_serial">
+                                <p>订单编号：<span class="serial">{{receiving.orderID}}</span></p>
+                            </span>
+                <span class="order_detail_address">
+                                <p>订单地址：<span class="detail_address">{{receiving.order_address}}</span></p>
+                            </span>
+            </section>
+            <section class="order_goods_box">
+                <div class="order_main_product">
+                    <div class="order_detail">
+                        <div class="order_detail_img">
+                            <img src="../public/image/{{receiving.goods_img}}" height="100%" width="100%">
+                        </div>
+                        <span class="order_detail_text">
+                                        <div class="order_detail_content">
+                                            <p class="order_detail_title" title="{{receiving.goods_name}}">{{receiving.goods_name}}</p>
+                                            <p class="order_detail_price">￥ {{receiving.order_price}}</p>
+                                        </div>
+                                    </span>
+                        <span class="order_detail_time">
+                                        <p>{{receiving.order_time.toLocaleString()}}</p>
+                                    </span>
+                        <span class="order_detail_number">
+                                        <p>X<span class="order_detail_num">{{receiving.goods_num}}</span></p>
+                                    </span>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class="order_del_button">
+                    <a href="/personal/confirmReceipt?orderDetailID={{receiving.orderDetailID}}">确认收货</a>
+                </div>
+            </section>
+        </div>
+        {{/each}}
+        {{else}}
+        <div class="no_text">
+            <div class="no_txt">
+                <div class="no_img"></div>
+                <p>自己买没买东西，心里没点数吗</p>
+            </div>
+        </div>
+        {{/if}}
+    </section>
+    <section id="wait_comment">
+        {{if commentList[0]}}
+        {{each commentList comment}}
+        <div class="order_main_item">
+            <section class="first_section">
+                            <span class="order_detail_serial">
+                                <p>订单编号：<span class="serial">{{comment.orderID}}</span></p>
+                            </span>
+                <span class="order_detail_address">
+                                <p>订单地址：<span class="detail_address">{{comment.order_address}}</span></p>
+                            </span>
+            </section>
+            <section class="order_goods_box">
+                <div class="order_main_product">
+                    <div class="order_detail">
+                        <div class="order_detail_img">
+                            <img src="../public/image/{{comment.goods_img}}" height="100%" width="100%">
+                        </div>
+                        <span class="order_detail_text">
+                                        <div class="order_detail_content">
+                                            <p class="order_detail_title" title="{{comment.goods_name}}">{{comment.goods_name}}</p>
+                                            <p class="order_detail_price">￥ {{comment.price_new}}</p>
+                                        </div>
+                                    </span>
+                        <span class="order_detail_time">
+                                        <p>{{comment.order_time.toLocaleString()}}</p>
+                                    </span>
+                        <span class="order_detail_number">
+                                        <p>X<span class="order_detail_num">{{comment.goods_num}}</span></p>
+                                    </span>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class="order_del_button">
+                    <p id="comment">评价</p>
+                </div>
+            </section>
+            <form action="/personal/doAddComment" method="post" style="display: none">
+                <input type="hidden" value="{{comment.goodsID}}" name="commentGoodsID">
+                <input type="hidden" value="{{comment.orderDetailID}}" name="orderDetailID">
+                <div class="add_comment">
+                    <p class="add_message">
+                    <textarea type="text" class="comment_message" name="remark_text" placeholder=" 请对商品做出评价,80字以内" maxlength="80"></textarea>
+                    </p>
+                    <p class="comment_img">
+                        <input type="file" name="comment_img">
+                    </p>
+                    <button type="submit" class="add_confirm">确认</button>
+                </div>
+            </form>
+        </div>
+        {{/each}}
+        {{else}}
+        <div class="no_text">
+            <div class="no_txt">
+                <div class="no_img"></div>
+                <p>没买东西，哪来的什么评论</p>
+            </div>
+        </div>
+        {{/if}}
+    </section>
+    <section id="all_orders">
+        {{if allOrderList[0]}}
+        {{each allOrderList allOrder}}
+        <div class="order_main_item">
+            <section class="first_section">
+                            <span class="order_detail_serial">
+                                <p>订单编号：<span class="serial">{{allOrder.orderID}}</span></p>
+                            </span>
+                <span class="order_detail_address">
+                                <p>订单地址：<span class="detail_address">{{allOrder.order_address}}</span></p>
+                            </span>
+            </section>
+            <section class="order_goods_box">
+                <div class="order_main_product">
+                    <div class="order_detail">
+                        <div class="order_detail_img">
+                            <img src="../public/image/{{allOrder.goods_img}}" height="100%" width="100%">
+                        </div>
+                        <span class="order_detail_text">
+                                        <div class="order_detail_content">
+                                            <p class="order_detail_title" title="{{allOrder.goods_name}}">{{allOrder.goods_name}}</p>
+                                            <p class="order_detail_price">￥ {{allOrder.price_new}}</p>
+                                        </div>
+                                    </span>
+                        <span class="order_detail_time">
+                                        <p>{{allOrder.order_time.toLocaleString()}}</p>
+                                    </span>
+                        <span class="order_detail_number">
+                                        <p>X<span class="order_detail_num">{{allOrder.goods_num}}</span></p>
+                                    </span>
+                    </div>
+                </div>
+            </section>
+            <!--<section>-->
+                <!--<p class="order_detail_aggregate">-->
+                    <!--共 <span class="order_all_num">{{allOrder.order_num}}</span>-->
+                    <!--件商品,订单总金额：<span class="order_all_price">{{allOrder.order_price}}元</span>-->
+                <!--</p>-->
+            <!--</section>-->
+            <!--<section>-->
+                <!--<div class="order_del_button">-->
+                    <!--<a href="">删除订单</a>-->
+                <!--</div>-->
+            <!--</section>-->
+        </div>
+        {{/each}}
+        {{else}}
+        <div class="no_text">
+            <div class="no_txt">
+                <div class="no_img"></div>
+                <p>自己买没买东西，心里没点数吗</p>
+            </div>
+        </div>
+        {{/if}}
+    </section>
+</div>
+</body>
+<script src="../public/JS/jquery-1.12.4.js"></script>
+<script>
+    function confirmReceipt(){
+        $("#already_pay").hide();
+        $("#wait_receiving").hide();
+        $("#wait_comment").show();
+        $("#all_orders").hide();
+        $(".order_main_nav ul li").addClass("active");
+        $(".order_main_nav ul li").siblings().removeClass("active");
+    }
+    function clickComment(){
+        var count = 0;
+        $('#comment').click(function () {
+            count++;
+            if(count%2==1){
+                $(this).parent().parent().next().show();
+            }else{
+                $(this).parent().parent().next().hide();
+            }
+        });
+    }
+    clickComment();
+    $('.add_confirm').click(function () {
+        $('.comment_content').hide();
+    });
+    //待发货，待收货，已评价，已完成交易等之间的切换
+    function orderCut() {
+        $(".order_main_nav ul li").click(function () {
+            let index = $(this).index();
+            if(index == 1)
+            {
+                $("#already_pay").hide();
+                $("#wait_receiving").show();
+                $("#wait_comment").hide();
+                $("#all_orders").hide();
+                $(this).addClass("active");
+                $(this).siblings().removeClass("active");
+
+            }else if(index == 2){
+                $("#already_pay").hide();
+                $("#wait_receiving").hide();
+                $("#wait_comment").show();
+                $("#all_orders").hide();
+                $(this).addClass("active");
+                $(this).siblings().removeClass("active");
+            }else if(index == 3){
+                $("#already_pay").hide();
+                $("#wait_receiving").hide();
+                $("#wait_comment").hide();
+                $("#all_orders").show();
+                $(this).addClass("active");
+                $(this).siblings().removeClass("active");
+            }else{
+                $("#already_pay").show();
+                $("#wait_receiving").hide();
+                $("#wait_comment").hide();
+                $("#all_orders").hide();
+                $(this).addClass("active");
+                $(this).siblings().removeClass("active");
+            }
+        });
+    }
+    orderCut();
+</script>
+</html>

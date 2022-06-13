@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理</title>
+    <link rel="stylesheet" href="../../public/CSS/admin_index.css">
+    <link rel="stylesheet" href="../../public/CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="../../public/CSS/font-awesome.min.css">
+    <script src="../../public/JS/jquery.min.js"></script>
+    <script src="../../public/JS/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../../public/CSS/admin_goods.css">
+    <link rel="stylesheet" href="../../public/CSS/admin_goods_add.css">
+</head>
+<body>
+<div class="admin_goods">
+    <div class="link-nav">
+        <ul>
+            <li><a herf="">商品管理 ></a></li>
+            <li> <a herf="">商品列表 ></a></li>
+            <li> 修改商品</li>
+        </ul>
+    </div>
+    <div class="add_goods">
+        <form action="/admin/doUpdateGoods" method="post">
+            <div class="form-group">
+                <p>商品名:</p>
+                <input type="text" class="form-control" placeholder="商品名称信息" name="goods_name" value="{{goodsList.goods_name}}">
+            </div>
+            <div class="form-group">
+                <p>商品图:</p>
+                <input type="file" class="form-control " placeholder="请选择商品图片信息" name="goods_img">
+            </div>
+            <div class="form-group">
+                <p>商品详情:</p>
+                <textarea class="form-control" name="goods_detail">{{goodsList.goods_detail}}</textarea>
+            </div>
+            <div class="form-group original_price">
+                <p>定价:</p>
+                <input type="number" class="form-control" name="price_old" value="{{goodsList.price_old}}">
+            </div>
+            <div class="form-group discount_price">
+                <p>折扣后价格:</p>
+                <input type="number" class="form-control" name="price_new" value="{{goodsList.price_new}}">
+            </div>
+            <div class="form-group stock_num">
+                <p>库存:</p>
+                <input type="number" class="form-control" name="stock" value="{{goodsList.stock}}">
+            </div>
+            <div class="form-group goods_type">
+                <p>商品类型:</p>
+                <select class="form-control" name="goods_type">
+                    <option>有品众筹</option>
+                    <option>有品秒杀</option>
+                    <option>每日新品</option>
+                    <option>专属推荐</option>
+                </select>
+            </div>
+            <div class="form-group recommend">
+                <p>是否作为相关推荐:</p>
+                <select class="form-control" name="recommend">
+                    <option selected>0</option>
+                    <option>1</option>
+                </select>
+            </div>
+            <input type="hidden" value="{{goodsList.goodsID}}" name="goodsID">
+            <button type="submit" class="btn btn-primary add_btn">确认修改</button>
+        </form>
+    </div>
+</div>
+</body>
+<script src="../../public/JS/jquery-1.12.4.js"></script>
+</html>

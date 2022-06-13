@@ -1,0 +1,289 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial,Microsoft Yahei,sans-serif;
+    font-size: 14px;
+    color: #333;
+}
+a{
+    text-decoration: none;
+    color: #333;
+}
+ul{
+    list-style: none;
+}
+#main{
+    background-color: rgba(0, 0, 0, 0.71);
+    overflow: hidden;
+    text-align: center;
+    height: 753px;
+}
+header{
+    border-bottom: 4px solid yellowgreen;
+    overflow: hidden;
+}
+header h3{
+    margin-left: 30px;
+    margin-top: 10px;
+    line-height: 30px;
+    float: left;
+    color: yellowgreen;
+    font-weight: bold;
+}
+.back_personal{
+    margin-right: 20px;
+    border: 2px solid #585454;
+    background-color: rgb(7 7 6 / 55%);
+    float: right;
+    width: 210px;
+    margin-top: 6px;
+}
+.admin_head{
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+    float: left;
+    margin-top: 2px;
+    margin-left: 4px;
+}
+.admin_personal{
+    float: left;
+    margin-left: 10px;
+    line-height: 8px;
+}
+.admin_personal p{
+    margin: 0;
+    line-height: 17px;
+}
+.welcome_user{
+    font-size: 11px;
+    margin-bottom: 10px;
+    color: #a9eaf0;
+}
+.operation span a{
+    font-size: 11px;
+    color: darkgrey;cursor: pointer;
+}
+.operation span a:hover{
+    text-decoration: none;
+    color: gainsboro;
+}
+/*左侧导航栏*/
+.admin_nav{
+    overflow: hidden;
+    width: 210px;
+    float: left;
+}
+.panel-group{
+    width: 210px;
+    margin: 0 auto;
+    float: left;
+}
+.panel-title a,.panel-body a{
+    text-decoration: none !important;
+}
+.panel-title a:hover,.panel-body a:hover{
+    text-decoration: none;
+}
+.panel{
+    border-radius: 0 !important;
+}
+/*右侧内容*/
+.admin_update{
+    float: left;
+    width: 170px;
+    margin: -15px 0 0 4px;
+    background: beige;
+    overflow: hidden;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.update_admin_head{
+    margin: 0 auto;
+    width: 152px;
+    height: 152px;
+}
+.update_admin_pass{
+    margin: 0 auto;
+    width: 152px;
+}
+.update_admin_pass p{
+    margin: 20px 0;
+}
+.con4 {
+    width: 152px;
+    height: 152px;
+    position: relative;
+    overflow: hidden;
+    color: #FFFFFF;
+    margin-top: 5px;
+}
+.con4 .upload {
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    left: 2px;
+    top: 0;
+    opacity: 0;
+}
+.upload_pic {
+    display: block;
+    width: 150px;
+    height: 150px;
+    opacity: 0;
+}
+#cvs {
+    border: 1px solid grey;
+    width: 150px;
+    height: 150px;
+    background-image: url("../image/head.png");
+    background-size: 100%;
+}
+.update_btn{
+    margin: 10px 0;
+}
+.admin_main{
+    padding: 15px 0 15px 50px;
+    float: left;
+    background-color: gainsboro;
+    width: 1309px;
+    height: 100%;
+}
+.admin_main_more{
+    width: 1066px;
+    height: 655px;
+    background-color: white;
+    border-radius: 10px;
+    float: left;
+}
+iframe{
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+.admin_main_index{
+    padding: 20px;
+}
+.admin_main_top{
+    overflow: hidden;
+    height: 180px;
+}
+.admin_data{
+    width: 240px;
+    height: 120px;
+    overflow: hidden;
+    margin-left: 16px;
+    border-radius: 10px;
+    float: left;
+    cursor: pointer;
+}
+.admin_data:first-of-type{
+    background-color: #69c3de;
+    margin-left: 0;
+}
+.admin_data:first-of-type:hover{
+    background-color: rgba(105, 195, 222, 0.81);
+}
+.admin_data:nth-of-type(2){
+    background-color: #ff5336;
+}
+.admin_data:nth-of-type(2):hover{
+    background-color: rgba(255, 83, 54, 0.81);
+}
+.admin_data:nth-of-type(3){
+    background-color: #fff24a;
+}
+.admin_data:nth-of-type(3):hover{
+    background-color: rgba(255, 242, 74, 0.81);
+}
+.admin_data:last-of-type{
+    background-color: #1eb4c3;
+}
+.admin_data:last-of-type:hover{
+    background-color: rgba(30, 180, 195, 0.81);
+}
+.admin_data_icon{
+    float: left;
+    margin: 24px 20px 24px 35px;
+    font-size: 50px;
+    border-radius: 50%;
+}
+.admin_data_icon i{
+    color: white;
+}
+.admin_data_content{
+    margin: 29px 20px 29px 10px;
+    color: white;
+}
+.admin_data_content h2{
+    font-size: 36px;
+    margin-bottom: 5px;
+}
+.admin_data_content p{
+    color: white;
+}
+.admin_main_left{
+    overflow: hidden;
+    width: 660px !important;
+    height: 430px !important;
+    float: left;
+    background: white;
+}
+.admin_table{
+    text-align: center;
+}
+.table-striped tr th{
+    text-align: center;
+}
+.admin_main_right{
+    overflow: hidden;
+    width: 340px;
+    padding: 15px;
+    float: left;
+}
+.admin_expend{
+    width: 271px;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-left: 19px;
+    cursor: pointer;
+}
+.admin_expend:first-of-type{
+    background-color: rgba(111, 212, 255, 0.75);
+}
+.admin_expend:nth-of-type(2){
+    background-color: rgba(154, 205, 50, 0.75);
+    margin-top: 20px;
+}
+.admin_expend_list{
+    text-align: left;
+    padding: 30px 0 0 30px;
+}
+.admin_expend_list p{
+    line-height: 20px;
+    color: white;
+}
+.admin_expend_bottom{
+    overflow: hidden;
+}
+.admin_expend:first-of-type .admin_expend_bottom{
+    background-color: #6fd4ff;
+}
+.admin_expend:first-of-type .admin_expend_bottom:hover{
+    background-color: rgba(111, 212, 255, 0.61);
+}
+.admin_expend:nth-of-type(2) .admin_expend_bottom{
+    background-color: yellowgreen;
+}
+.admin_expend:nth-of-type(2) .admin_expend_bottom:hover{
+    background-color: rgba(154, 205, 50, 0.61);
+}
+.admin_expend_bottom p{
+    font-size: 48px;
+    color: white;
+    text-align: left;
+    margin-left: 30px;
+}
+.admin_expend_bottom p span{
+    color: white;
+}

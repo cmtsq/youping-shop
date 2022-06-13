@@ -1,0 +1,255 @@
+.admin_main_evaluate{
+    padding: 20px;
+    text-align: initial;
+    width: 1066px;
+    height: 655px;
+    position: relative;
+}
+.link-nav{
+    text-align: left;
+    overflow: hidden;
+}
+.link-nav>ul{
+    float: left;
+}
+.link-nav>ul>li{
+    display: inline-block;
+    margin-left: 5px;
+    font-size: 16px;
+    color: darkgrey;
+}
+.link-nav a{
+    display: inline-block;
+    font-size: 16px;
+    color: black;
+}
+.link-nav a:hover{
+    text-decoration: none;
+}
+.evaluate_top{
+    margin: 8px 0;
+}
+.run_del{
+    min-width: 120px !important;
+}
+.btn-group{
+    float: left;
+    margin: 8px 0;
+}
+.search_group{
+    float: right;
+}
+.evaluate_main{
+    background: #fafafa;
+    width: 1025px;
+    height: 100%;
+    overflow: hidden;
+}
+.evaluate_title{
+    height: 42px;
+    line-height: 40px;
+    background-color: honeydew;
+    color: #999;
+}
+.evaluate_title span{
+    display: inline-block;
+    vertical-align: middle;
+}
+.select{
+    line-height: 15px;
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+    margin: 0 0 0 5px !important;
+}
+.ele_goods{
+    width: 280px;
+    text-align: center;
+}
+.ele_comment{
+    width: 280px;
+    text-align: center;
+}
+.ele_time{
+    width: 160px;
+    text-align: center;
+}
+.ele_user{
+    width: 140px;
+    text-align: center;
+}
+.ele_edit{
+    width: 122px;
+    text-align: center;
+}
+.evaluate_item{
+    overflow: hidden;
+}
+.evaluate_contain{
+    border-bottom: 1px dashed grey;
+}
+.evaluate_item input{
+    float: left;
+    height: 100px;
+}
+.evaluate_item .ele_goods{
+    float: left;
+    margin-left: 4px;
+    height: 100px;
+    padding: 13px 0;
+}
+.ele_goods_name{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 200px;
+    margin: 0 auto;
+    cursor: pointer;
+}
+.evaluate_item .ele_comment{
+    float: left;
+    margin-left: 4px;
+    height: 100px;
+    padding: 13px 0;
+}
+.ele_comment_name{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 200px;
+    margin: 0 auto;
+    cursor: pointer;
+}
+.evaluate_item .ele_time{
+    float: left;
+    margin-left: 3px;
+    height: 100px;
+    padding: 40px 0;
+}
+.evaluate_item .ele_user{
+    float: left;
+    margin-left: 4px;
+    height: 100px;
+    padding: 40px 0;
+}
+.evaluate_item .ele_edit{
+    float: left;
+    margin-left: 4px;
+    height: 100px;
+    padding: 40px 0;
+    cursor: pointer;
+}
+.evaluate_item .ele_edit:hover{
+    color: #888888;
+}
+.evaluate_input{
+    padding: 0 20px;
+    overflow: hidden;
+    display: none;
+    margin-bottom: 10px;
+}
+.ele_text{
+    width: 920px;
+    float: left;
+}
+.ele_send{
+    float: right;
+}
+.pager{
+    margin: 17px 0 !important;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 20px;
+}
+.pager span{
+    line-height: 33px;
+}
+.evaluate_reply{
+    background: #fafafa;
+    width: 1025px;
+    height: 100%;
+    overflow: hidden;
+    border-top: 1px solid;
+}
+.reply_goods{
+    width: 280px;
+    text-align: center;
+}
+.reply_comment{
+    width: 310px;
+    padding-left: 60px;
+}
+.reply_content{
+    width: 310px;
+    padding-left: 60px;
+}
+.reply_edit{
+    width: 113px;
+    text-align: center;
+}
+.remark_goods{
+    float: left;
+}
+.remark_goods_img{
+    float: left;
+}
+.remark_goods_content{
+    float: left;
+}
+.remark_goods_txt{
+    display: block;
+    line-height: 40px;
+    margin-top: 30px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 17px;
+    width: 180px;
+    overflow: hidden;
+}
+.remark_goods_price{
+    color: #cd1b1e;
+    display: block;
+    font-size: 15px;
+}
+.remark_content{
+    float: left;
+    width: 310px;
+    margin-top: 30px;
+    padding: 0 10px;
+}
+.remark_reply{
+    float: left;
+    width: 310px;
+    margin-top: 30px;
+    padding: 0 10px;
+}
+.remark_del{
+    position: relative;
+    display: block;
+    float: right;
+    margin: 30px 0;
+}
+.remark_del a{
+    color: #666;
+    border: 1px solid #666;
+    height: 36px;
+    line-height: 34px;
+    font-size: 16px;
+    display: inline-block;
+    border-radius: 2px;
+    text-align: center;
+    padding: 0 6px;
+    transition: all .5s cubic-bezier(0,1,.5,1);
+    width: 100px;
+}
+.remark_del a:hover{
+    background-color: #845f3f;
+    color: white;
+    text-decoration: none;
+}
+.reply_item{
+    overflow: hidden;
+}

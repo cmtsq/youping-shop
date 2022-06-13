@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理</title>
+    <link rel="stylesheet" href="../../public/CSS/admin_index.css">
+    <link rel="stylesheet" href="../../public/CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="../../public/CSS/font-awesome.min.css">
+    <script src="../../public/JS/jquery.min.js"></script>
+    <script src="../../public/JS/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../../public/CSS/admin_goods.css">
+</head>
+<body>
+<div class="admin_goods">
+    <div class="link-nav">
+        <ul>
+            <li><a herf="">商品管理 ></a></li>
+            <li> 商品列表</li>
+        </ul>
+        <div class="admin_goods_adds">
+            <a href="#" class="notPutAway">未上架的商品</a>&ensp;
+            <a href="/admin/showAddGoods">添加商品</a>
+        </div>
+    </div>
+    <div class="putAway">
+        <div class="admin_goods_message">
+            <table class="table table-hover">
+                <thead>
+                <tr style="background-color: #e0e7ec;">
+                    <th>商品ID</th>
+                    <th>商品名称</th>
+                    <th>商品图片</th>
+                    <th>折扣前</th>
+                    <th>折扣后</th>
+                    <th>库存量</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{each goodsList goods}}
+                <tr>
+                    <td>{{goods.goodsID}}</td>
+                    <td style="width: 200px">{{goods.goods_name}}</td>
+                    <td><img src="../../public/image/{{goods.goods_img}}" width="60px" height="60px"></td>
+                    <td>{{goods.price_old}}￥</td>
+                    <td>{{goods.price_new}}￥</td>
+                    <td>{{goods.stock}}</td>
+                    <td>
+                        <a href="/admin/showUpdateGoods?goodsID={{goods.goodsID}}" class="btn btn-success">修改</a>&ensp;
+                        {{if goods.goods_status=='上架'}}
+                        <a href="/admin/outAwayGoods?goodsID={{goods.goodsID}}" class="btn btn-warning">下架</a>
+                        {{else}}
+                        <a href="/admin/putAwayGoods?goodsID={{goods.goodsID}}" class="btn btn-info">上架</a>
+                        {{/if}}
+                    </td>
+                </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        </div>
+        <div class="admin_goods_page">
+            <ul class="pagination">
+                <li><a href="/admin/admin_goods?page=<%=page-1%>" id="pPage">&laquo;</a></li>
+                <%for(var i=1;i<=pageCount;i++){%>
+                <li><a href="/admin/admin_goods?page={{i}}">{{i}}</a></li>
+                <%}%>
+                <li><a href="/admin/admin_goods?page=<%=page+1%>" id="nPage">&raquo;</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="outAway" style="display: none">
+        <div class="admin_goods_message">
+            <table class="table table-hover">
+                <thead>
+                <tr style="background-color: #e0e7ec;">
+                    <th>商品ID</th>
+                    <th>商品名称</th>
+                    <th>商品图片</th>
+                    <th>折扣前</th>
+                    <th>折扣后</th>
+                    <th>库存量</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{each outAwayGoodsList outAwayGoods}}
+                <tr>
+                    <td>{{outAwayGoods.goodsID}}</td>
+                    <td style="width: 200px">{{outAwayGoods.goods_name}}</td>
+                    <td><img src="../../public/image/{{outAwayGoods.goods_img}}" width="60px" height="60px"></td>
+                    <td>{{outAwayGoods.price_old}}￥</td>
+                    <td>{{outAwayGoods.price_new}}￥</td>
+                    <td>{{outAwayGoods.stock}}</td>
+                    <td>
+                        <a href="/admin/showUpdateGoods?goodsID={{outAwayGoods.goodsID}}" class="btn btn-success">修改</a>&ensp;
+                        <a href="/admin/putAwayGoods?goodsID={{outAwayGoods.goodsID}}" class="btn btn-info">上架</a>
+                    </td>
+                </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../../public/JS/jquery-1.12.4.js"></script>
+<script>
+    //分页
+    var page = '<%=page%>';
+    var pageCount = '<%=pageCount%>';
+    if(page == 1){
+        document.getElementById('pPage').onclick = function () {
+            return false;
+        };
+    }
+    if(page == pageCount){
+        document.getElementById('nPage').onclick = function () {
+            return false;
+        };
+    }
+    //未上架的商品展示
+    $('.notPutAway').click(function () {
+        $('.putAway').hide();
+        $('.outAway').show();
+    });
+</script>
+</html>

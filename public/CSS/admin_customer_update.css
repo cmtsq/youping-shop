@@ -1,0 +1,32 @@
+.update_user_content{
+    width: 1024px;
+    height: 583px;
+    padding: 25px;
+    background: beige;
+    border-radius: 5px;
+}
+.update_user_content div{
+    margin-top: 20px !important;
+    display: inline-flex;
+    color: lightslategrey;
+}
+.head_detail{
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+}
+.user_detail input,.pass_detail input{
+    border: none;
+    background: none;
+    border-bottom: 2px solid grey;
+}
+.user_detail input:focus,.pass_detail input:focus{
+    outline: none;
+}
+.pass_detail{
+    margin-left: 40px;
+}
+.update_detail_btn{
+    vertical-align: bottom;
+    margin: 0 0 0 60px;
+}

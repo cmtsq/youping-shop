@@ -1,0 +1,66 @@
+.admin_goods{
+    padding: 20px;
+}
+.link-nav{
+    text-align: left;
+    overflow: hidden;
+}
+.link-nav>ul{
+    float: left;
+}
+.link-nav>ul>li{
+    display: inline-block;
+    margin-left: 5px;
+    font-size: 16px;
+    color: darkgrey;
+}
+.link-nav a{
+    display: inline-block;
+    font-size: 16px;
+    color: black;
+}
+.link-nav a:hover{
+    text-decoration: none;
+}
+.admin_goods_message{
+    margin: 20px 5px;
+    border: 1px solid rgba(0,0,0,0.2);
+    overflow: hidden;
+    padding: 20px;
+    height: 542px;
+}
+th{
+    text-align: center;
+}
+td{
+    text-align: center;
+}
+.admin_goods_adds{
+    float: right;
+    margin-right: 5px;
+}
+.admin_goods_adds a,.update_detail_btn button{
+    padding: 0 15px;
+    height: 30px;
+    background: #6589da;
+    border: 1px solid rgba(0,0,0,.1);
+    border-radius: 5px;
+    color: #eee;
+    line-height: 29px;
+    text-decoration: none;
+}
+.admin_goods_adds a:hover,.update_detail_btn button:hover{
+    color: #eee;
+    background-color: rgba(101, 137, 218, 0.71);
+    text-decoration: none;
+}
+.group_btn div button{
+    border-color: #6ab2f0 !important;
+}
+.group_btn div button:focus{
+    outline: 0;
+    background-color: #6c97d1 !important;
+}
+.background_color{
+    background-color: #6c97d1 !important;
+}

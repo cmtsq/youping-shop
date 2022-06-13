@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../public/CSS/font-awesome.min.css">
+    <link rel="stylesheet" href="../public/CSS/address.css">
+    <link rel="stylesheet" href="../public/CSS/index.css">
+
+</head>
+<body>
+<div class="main_address">
+    <section>
+        <div class="address_title">
+            <p>地址管理</p>
+        </div>
+    </section>
+    <section>
+        <div class="address_list">
+            <form action="/personal/doAddAddress" method="post">
+            <div class="address_list_item">
+                <div class="address_item_content">
+                    <div class="address_message">
+                        <p class="address_name">收货人：<input type="text" name="name"></p>
+                        <p class="address_tel">联系电话：<input type="tel" name="tel"></p>
+                        <p class="address_place">联系地址：<input type="text" name="address"></p>
+                    </div>
+                    <div class="address_button">
+                        <a href="/personal/address">取消</a>
+                        <button type="submit">确定</button>
+                    </div>
+                </div>
+            </div>
+            </form>
+        </div>
+    </section>
+</div>
+</body>
+<script src="../public/JS/jquery-1.12.4.js"></script>
+<script>
+    function show() {
+        $(".address_list_item").mouseover(function () {
+            $(this).children().children(".address_button").show();
+        });
+        $(".address_list_item").mouseleave(function () {
+            $(this).children().children(".address_button").hide();
+        });
+    }
+    show();
+</script>
+</html>

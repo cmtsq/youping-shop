@@ -1,0 +1,92 @@
+*{
+    font-family: '微软雅黑';
+    color: rgb(100, 100, 100);
+    margin: 0;
+    padding: 0;
+}
+body{
+     width: 100%;
+     height: 100%;
+     background-image: linear-gradient(to right, #268dc6, rgba(79, 157, 170, 0.69), rgba(67, 195, 148, 0.57));
+ }
+.main{
+    width: 600px;
+    margin: 0 auto;
+    margin-top: 150px;
+}
+.main>h3{
+    text-align: center;
+    color: white;
+    font-weight: 500;
+    margin-bottom: 32px;
+    line-height: 42px;
+    border-bottom: 2px solid;
+}
+.login{
+    border: none;
+    background: #edf4faab;
+    margin: 0 auto;
+    width: 400px;
+    height: 265px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #6f6f8a;
+}
+.admin_login_title{
+    margin-bottom: 25px !important;
+}
+.admin_login_title h4{
+    text-align: center;
+    overflow: hidden;
+    margin: 0;
+    line-height: 40px;
+    background: white;
+    margin: 0 15px;
+    border-radius: 10px 10px 0 0;
+}
+.admin_group{
+    margin-left: 15px !important;
+}
+.admin_position{
+    position: relative;
+    padding-right: 0 !important;
+}
+.admin_user{
+    display: block;
+    width: 34px;
+    height: 34px;
+    background: #d0d0d0d1;
+    position: absolute;
+    right: -16px;
+    top: 0;
+    border-radius: 4px 0 0 4px;
+}
+.admin_user i{
+    color: white;
+    padding: 11px;
+}
+.admin_lock{
+    display: block;
+    width: 34px;
+    height: 34px;
+    background: #d0d0d0d1;
+    position: absolute;
+    right: -16px;
+    top: 0;
+    border-radius: 4px 0 0 4px;
+}
+.admin_lock i{
+    color: white;
+    padding: 11px;
+}
+.admin_input{
+    width: 230px !important;
+    border-radius: 0 4px 4px 0 !important;
+}
+.remember_pass{
+    margin-left: 97px !important;
+}
+.admin_login_btn{
+    width: 120px !important;
+    margin: 0 auto !important;
+    text-align: left;
+}

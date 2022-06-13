@@ -1,0 +1,103 @@
+/*个人信息部分*/
+.main_oneself{
+    font-size: 16px;
+    padding: 11px 0 11px 60px;
+    min-height: 500px;
+}
+.main_oneself section{
+    position: relative;
+    display: block;
+    overflow: hidden;
+    color: #4a4a4a;
+}
+.oneself_title{
+    padding: 25px 0 10px;
+    margin: 0 30px 0 0;
+    border-bottom: 1px solid #e7e7e7;
+}
+.oneself_title p{
+    color: #845f3f;
+    font-size: 18px;
+    font-weight: 400;
+}
+.oneself_content{
+    width: 810px;
+    height: 590px;
+    margin-top: 10px;
+    padding: 60px 30px 0 70px;
+    background: beige;
+    overflow: hidden;
+}
+.head_detail{
+    float: left;
+}
+.head_img{
+    margin-top: 10px;
+    width: 200px;
+    height: 200px;
+}
+.user_detail{
+    margin: 33px 0;
+    font-size: 16px;
+}
+.pass_detail{
+    font-size: 16px;
+    margin-bottom: 33px;
+}
+.user_status{
+    margin-bottom: 27px;
+}
+.user_status span{
+    display: inline-block;
+    width: 60px;
+    line-height: 22px;
+    text-align: center;
+    color: darkcyan;
+    background: #bee5eb;
+}
+.user_detail span,.pass_detail span{
+    width: 100px;
+    display: inline-block;
+    text-align: center;
+    border-bottom: 2px solid grey;
+}
+.user_detail input,.pass_detail input{
+    width: 100px;
+    display: inline-block;
+    text-align: center;
+    border: none;
+    background: none;
+    border-bottom: 2px solid grey;
+}
+.user_detail input:focus,.pass_detail input:focus{
+    outline: none;
+}
+.con4 {
+    width: 152px;
+    height: 152px;
+    position: relative;
+    overflow: hidden;
+    color: #FFFFFF;
+    margin-top: 5px;
+}
+.con4 .upload {
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    left: 2px;
+    top: 0;
+    opacity: 0;
+}
+.upload_pic {
+    display: block;
+    width: 150px;
+    height: 150px;
+    opacity: 0;
+}
+#cvs {
+    border: 1px solid grey;
+    width: 150px;
+    height: 150px;
+    background-image: url("../image/head.png");
+    background-size: 100%;
+}

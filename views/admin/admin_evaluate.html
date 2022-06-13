@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理</title>
+    <link rel="stylesheet" href="../../public/CSS/admin_index.css">
+    <link rel="stylesheet" href="../../public/CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="../../public/CSS/font-awesome.min.css">
+    <script src="../../public/JS/jquery.min.js"></script>
+    <script src="../../public/JS/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../../public/CSS/admin_evaluate.css">
+</head>
+<body>
+<div class="admin_main_evaluate">
+    <div class="link-nav">
+        <ul>
+            <li><a herf="">评价管理 ></a></li>
+            <li> 评价中心</li>
+        </ul>
+    </div>
+    <div class="admin_evaluate">
+        <div class="evaluate_top">
+            <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    <span class="glyphicon glyphicon-cog"></span> 批量操作 <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu run_del" role="menu">
+                    <li><a href="#">全部隐藏</a></li>
+                    <li><a href="#">全部显示</a></li>
+                    <li><a href="#">已回复的消息</a></li>
+                </ul>
+            </div>
+            <div class="search_group">
+                <form class="navbar-form navbar-left" role="search">
+                    <input type="hidden" value="1" name="remarkPage">
+                    <div class="form-group" style="display: inline-block">
+                        <input type="search" class="form-control" placeholder="Search" id="searchKey">
+                    </div>
+                    <button type="button" class="btn btn-default" id="searchRemark">搜索</button>
+                </form>
+            </div>
+        </div>
+        <div class="evaluate_main">
+            <div class="evaluate_title">
+                <input type="checkbox" class="select" id="inputAll">
+                <span class="ele_goods">商品信息</span>
+                <span class="ele_comment">评论信息</span>
+                <span class="ele_time">评论时间</span>
+                <span class="ele_user">用户</span>
+                <span class="ele_edit">操作</span>
+            </div>
+            {{if searchList}}
+            <div class="evaluate_content">
+                {{each searchList search}}
+                <div class="evaluate_contain">
+                    <div class="evaluate_item">
+                        <input type="checkbox" class="select check" value="{{search.remarkID}}">
+                        <span class="ele_goods">
+                            <div class="ele_goods_name" title="{{search.goods_name}}">
+                                {{search.goods_name}}
+                            </div>
+                        <div class="ele_goods_img"><img src="../../public/image/{{search.goods_img}}" width="60px" height="60px"></div>
+                        </span>
+                        <span class="ele_comment">
+                            <div class="ele_comment_name" title="{{search.remark_content}}">{{search.remark_content}}</div>
+                            <div class="ele_comment_img"><img src="../../public/image/{{search.remark_img}}" width="60px" height="60px"></div>
+                        </span>
+                        <span class="ele_time">{{search.remark_time.toLocaleString()}}</span>
+                        <span class="ele_user">{{search.user_name}}</span>
+                        <span class="ele_edit ele_reply">回复</span>
+                    </div>
+                    <div class="evaluate_input">
+                        <form action="/admin/doReply" method="post">
+                            <input type="hidden" value="{{search.remarkID}}" name="remarkID">
+                            <div class="ele_text">
+                                <textarea type="text" class="form-control" name="reply_content" rows="1" placeholder="请输入回复内容,不超过100字" maxlength="100"></textarea>
+                            </div>
+                            <div class="ele_send">
+                                <button type="submit" class="btn btn-info">发送</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+            {{else}}
+            <div class="evaluate_content">
+                {{each remarkList remark}}
+                <div class="evaluate_contain">
+                    <div class="evaluate_item">
+                        <input type="checkbox" class="select check checkRemark" value="{{remark.remarkID}}">
+                        <span class="ele_goods">
+                            <div class="ele_goods_name" title="{{remark.goods_name}}">{{remark.goods_name}}</div>
+                            <div class="ele_goods_img"><img src="../../public/image/{{remark.goods_img}}" width="60px" height="60px"></div>
+                        </span>
+                        <span class="ele_comment">
+                            <div class="ele_comment_name" title="{{remark.remark_content}}">{{remark.remark_content}}</div>
+                            <div class="ele_comment_img"><img src="../../public/image/{{remark.remark_img}}" width="60px" height="60px"></div>
+                        </span>
+                        <span class="ele_time">{{remark.remark_time.toLocaleString()}}</span>
+                        <span class="ele_user">{{remark.user_name}}</span>
+                        <span class="ele_edit ele_reply">回复</span>
+                    </div>
+                    <div class="evaluate_input">
+                        <form action="/admin/doReply" method="post">
+                            <input type="hidden" value="{{remark.remarkID}}" name="remarkID">
+                            <div class="ele_text">
+                                <textarea type="text" class="form-control" name="reply_content" placeholder="请输入回复内容,不超过100字" maxlength="100" rows="1"></textarea>
+                            </div>
+                            <div class="ele_send">
+                                <button type="submit" class="btn btn-info">发送</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+            {{/if}}
+        </div>
+        <div class="evaluate_reply" style="display: none">
+            <div class="evaluate_title">
+                <span class="reply_goods">商品信息</span>
+                <span class="reply_comment">评论信息</span>
+                <span class="reply_content">回复</span>
+                <span class="reply_edit">操作</span>
+            </div>
+            {{each replyList reply}}
+            <div class="reply_item">
+                <div class="remark_goods">
+                    <p class="remark_goods_img"><img src="../../public/image/{{reply.goods_img}}" width="100px" height="100px" ></p>
+                    <p class="remark_goods_content">
+                        <span class="remark_goods_txt" title="{{reply.goods_name}}">{{reply.goods_name}}</span>
+                        <span class="remark_goods_price">{{reply.price_new}}元</span>
+                    </p>
+                </div>
+                <div class="remark_content">
+                    <p class="remark_txt">{{reply.remark_content}}</p>
+                    <p class="remark_time">[{{reply.remark_time.toLocaleString()}}]</p>
+                </div>
+                <div class="remark_reply">
+                    <p class="remark_txt">{{reply.reply_content}}</p>
+                    <p class="remark_time">[{{reply.reply_time.toLocaleString()}}]</p>
+                </div>
+                <div class="remark_del"><a href="/admin/delReply?replyID={{reply.replyID}}">删除</a></div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+    {{if searchList}}
+    <ul class="pager">
+        <li class="previous"><a href="/admin/doSearchRemark2?page={{page-1}}" id="pPage" class="prevPage">&larr; 上一页</a></li>
+        <span>一共{{pageCount}}页，当前第{{page}}页</span>
+        <li class="next"><a href="/admin/doSearchRemark2?page={{page+1}}" id="nPage" class="nextPage">下一页 &rarr;</a></li>
+    </ul>
+    {{else}}
+    <ul class="pager">
+        <li class="previous"><a href="/admin/admin_evaluate?page=<%=page-1%>" id="pPage">&larr; 上一页</a></li>
+        <span>一共{{pageCount}}页，当前第{{page}}页</span>
+        <li class="next"><a href="/admin/admin_evaluate?page=<%=page+1%>" id="nPage">下一页 &rarr;</a></li>
+    </ul>
+    {{/if}}
+</div>
+</body>
+<script src="../../public/JS/jquery-1.12.4.js"></script>
+<script>
+    $('#searchRemark').click(function () {
+        $.ajax({
+            type:'get',
+            url: '/admin/doSearchRemark',
+            traditional: true,//结果深度化，可以传结果集
+            data:{
+                page:1,
+                searchKey:$('#searchKey').val()
+            },
+            success:function (data) {
+                document.write(data);
+            }
+        });
+    });
+    //全选框
+    $("#inputAll").click(function () {
+        if(this.checked){
+            $('.check').prop('checked',true);
+        }else{
+            $('.check').prop('checked',false);
+        }
+    });
+    //选中全部商品后，全选会勾住
+    $('.check').click(function () {
+        if($('.check:checked').length == $('.check').length){
+            $('#inputAll').prop('checked',true);
+        }else{
+            $('#inputAll').prop('checked',false);
+        }
+    });
+    //回复
+    function reply(){
+            var count = 0;
+            $('.ele_reply').click(function () {
+                count++;
+                if(count%2==1){
+                    $(this).parent().next().show();
+                }else{
+                    $(this).parent().next().hide();
+                }
+            });
+        }
+    reply();
+    //分页
+    function page() {
+        var page = '<%=page%>';
+        var pageCount = '<%=pageCount%>';
+        if(page == 1){
+            document.getElementById('pPage').onclick = function () {
+                return false;
+            };
+        }
+        if(page == pageCount){
+            document.getElementById('nPage').onclick = function () {
+                return false;
+            };
+        }
+    }
+    page();
+    $('.run_del li').click(function () {
+        var index = $(this).index();
+        if(index==0){
+            $('.evaluate_content').hide();
+            $('.pager').hide();
+            $('.evaluate_reply').hide();
+        }else if(index==1){
+            $('.evaluate_content').show();
+            $('.pager').show();
+            $('.evaluate_main').show();
+            $('.evaluate_reply').hide();
+        }else{
+            $('.evaluate_main').hide();
+            $('.pager').hide();
+            $('.evaluate_reply').show();
+        }
+    });
+</script>
+</html>
